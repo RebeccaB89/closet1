@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" promptedForUpgradeToXcode5="NO">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <development version="5000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2" customClass="UIBubbleContactItemView">
+            <rect key="frame" x="0.0" y="0.0" width="115" height="25"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="DanielCraigButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="3" userLabel="Bubble Image">
+                    <rect key="frame" x="0.0" y="0.0" width="115" height="25"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11" userLabel="NameContact Label">
+                    <rect key="frame" x="7" y="3" width="84" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="84" id="27"/>
+                        <constraint firstAttribute="height" constant="19" id="28"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17" userLabel="Delete Button">
+                    <rect key="frame" x="90" y="0.0" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="19"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="XSimbol.png">
+                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteButtonPressed" destination="2" eventType="touchUpInside" id="18"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="3" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="20"/>
+                <constraint firstItem="3" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" id="21"/>
+                <constraint firstItem="3" firstAttribute="top" secondItem="2" secondAttribute="top" id="22"/>
+                <constraint firstItem="3" firstAttribute="top" secondItem="17" secondAttribute="top" id="23"/>
+                <constraint firstItem="11" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="7" id="24"/>
+                <constraint firstItem="17" firstAttribute="baseline" secondItem="11" secondAttribute="baseline" id="25"/>
+                <constraint firstItem="17" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" id="26"/>
+                <constraint firstAttribute="centerY" secondItem="17" secondAttribute="centerY" id="62D-uP-xXb"/>
+                <constraint firstItem="3" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="ETk-oh-0XR"/>
+                <constraint firstAttribute="centerY" secondItem="11" secondAttribute="centerY" id="FaA-5V-B5O"/>
+                <constraint firstItem="3" firstAttribute="top" secondItem="2" secondAttribute="top" id="jz5-HY-Uql"/>
+                <constraint firstAttribute="trailing" secondItem="3" secondAttribute="trailing" id="uUU-Cz-wDm"/>
+                <constraint firstAttribute="bottom" secondItem="3" secondAttribute="bottom" id="xWu-RJ-wqO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="_nameLabel" destination="11" id="15"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="DanielCraigButton.png" width="115" height="25"/>
+        <image name="XSimbol.png" width="11" height="11"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

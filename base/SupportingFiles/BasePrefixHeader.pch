@@ -1,0 +1,24 @@
+//
+//  BasePrefixHeader.pch
+//  base
+//
+//  Created by Rebecca Biaz on 5/11/15.
+//  Copyright (c) 2015 rebecca. All rights reserved.
+//
+
+#ifndef base_BasePrefixHeader_pch
+#define base_BasePrefixHeader_pch
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+#import "UIView-Nib.h"
+#import "UIViewController-Nib.h"
+#import "UIView-Additions.h"
+
+#import "Shared.h"
+#import "Constants.h"
+
+#import <UIKit/UIKit.h>
+
+#endif
