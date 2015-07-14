@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIDresserViewController : UIViewController
+@interface UIDresserViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+{
+    __weak IBOutlet UICollectionView *_clothsCollectionView;
+    NSDictionary *_cloths;
+    NSArray *_sections;
+}
 
 @end

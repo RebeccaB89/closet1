@@ -72,6 +72,15 @@
 		48BB71E91B329BD300641F76 /* ClothTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BB71E81B329BD300641F76 /* ClothTypeHelper.m */; };
 		48D222B21B315458006C2B35 /* UIMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D222B01B315458006C2B35 /* UIMainViewController.m */; };
 		48D222B31B315458006C2B35 /* UIMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48D222B11B315458006C2B35 /* UIMainViewController.xib */; };
+		B35338CE1B52B28F00B2BE3E /* UIClothDresserView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338CD1B52B28F00B2BE3E /* UIClothDresserView.m */; };
+		B35338D01B52B29800B2BE3E /* UIClothDresserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35338CF1B52B29800B2BE3E /* UIClothDresserView.xib */; };
+		B35338D91B52B71300B2BE3E /* UIHeaderClothDresserView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338D71B52B71300B2BE3E /* UIHeaderClothDresserView.m */; };
+		B35338DA1B52B71300B2BE3E /* UIHeaderClothDresserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35338D81B52B71300B2BE3E /* UIHeaderClothDresserView.xib */; };
+		B35338DE1B52EBA800B2BE3E /* UIResultFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338DD1B52EBA800B2BE3E /* UIResultFilterView.m */; };
+		B35338E01B52EBB400B2BE3E /* UIResultFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35338DF1B52EBB400B2BE3E /* UIResultFilterView.xib */; };
+		B35338E41B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338E21B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.m */; };
+		B35338E51B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35338E31B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib */; };
+		B35338E81B538F8900B2BE3E /* CostumeResultsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338E71B538F8900B2BE3E /* CostumeResultsInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +184,20 @@
 		48D222AF1B315458006C2B35 /* UIMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMainViewController.h; sourceTree = "<group>"; };
 		48D222B01B315458006C2B35 /* UIMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMainViewController.m; sourceTree = "<group>"; };
 		48D222B11B315458006C2B35 /* UIMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIMainViewController.xib; sourceTree = "<group>"; };
+		B35338CC1B52B28F00B2BE3E /* UIClothDresserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIClothDresserView.h; sourceTree = "<group>"; };
+		B35338CD1B52B28F00B2BE3E /* UIClothDresserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIClothDresserView.m; sourceTree = "<group>"; };
+		B35338CF1B52B29800B2BE3E /* UIClothDresserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIClothDresserView.xib; sourceTree = "<group>"; };
+		B35338D61B52B71300B2BE3E /* UIHeaderClothDresserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHeaderClothDresserView.h; sourceTree = "<group>"; };
+		B35338D71B52B71300B2BE3E /* UIHeaderClothDresserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHeaderClothDresserView.m; sourceTree = "<group>"; };
+		B35338D81B52B71300B2BE3E /* UIHeaderClothDresserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIHeaderClothDresserView.xib; sourceTree = "<group>"; };
+		B35338DC1B52EBA800B2BE3E /* UIResultFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResultFilterView.h; sourceTree = "<group>"; };
+		B35338DD1B52EBA800B2BE3E /* UIResultFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIResultFilterView.m; sourceTree = "<group>"; };
+		B35338DF1B52EBB400B2BE3E /* UIResultFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIResultFilterView.xib; sourceTree = "<group>"; };
+		B35338E11B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResultFilterCollectionViewCell.h; sourceTree = "<group>"; };
+		B35338E21B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIResultFilterCollectionViewCell.m; sourceTree = "<group>"; };
+		B35338E31B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIResultFilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		B35338E61B538F8900B2BE3E /* CostumeResultsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostumeResultsInfo.h; sourceTree = "<group>"; };
+		B35338E71B538F8900B2BE3E /* CostumeResultsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostumeResultsInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +273,12 @@
 				480C7CC61B36F3FA00D4E585 /* UIFilterItemView.h */,
 				480C7CC71B36F3FA00D4E585 /* UIFilterItemView.m */,
 				480C7CC91B36F51B00D4E585 /* UIFilterItemView.xib */,
+				B35338DC1B52EBA800B2BE3E /* UIResultFilterView.h */,
+				B35338DD1B52EBA800B2BE3E /* UIResultFilterView.m */,
+				B35338DF1B52EBB400B2BE3E /* UIResultFilterView.xib */,
+				B35338E11B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.h */,
+				B35338E21B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.m */,
+				B35338E31B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -392,6 +421,7 @@
 		4889751B1B00932800E63E90 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				B35338CB1B52B25600B2BE3E /* Dresser */,
 				480C7CC01B36D98B00D4E585 /* Filter */,
 				480C7CA61B3687C800D4E585 /* Tags */,
 				480C7C7A1B332ABD00D4E585 /* UITagsView.h */,
@@ -451,6 +481,8 @@
 				480C7C971B33318900D4E585 /* EventClothTypeInfo.m */,
 				480C7C991B33320700D4E585 /* SeasonClothTypeInfo.h */,
 				480C7C9A1B33320700D4E585 /* SeasonClothTypeInfo.m */,
+				B35338E61B538F8900B2BE3E /* CostumeResultsInfo.h */,
+				B35338E71B538F8900B2BE3E /* CostumeResultsInfo.m */,
 			);
 			path = Element;
 			sourceTree = "<group>";
@@ -493,6 +525,19 @@
 				48BB71DD1B318AE200641F76 /* UICostumeViewController.xib */,
 			);
 			path = Costume;
+			sourceTree = "<group>";
+		};
+		B35338CB1B52B25600B2BE3E /* Dresser */ = {
+			isa = PBXGroup;
+			children = (
+				B35338D61B52B71300B2BE3E /* UIHeaderClothDresserView.h */,
+				B35338CC1B52B28F00B2BE3E /* UIClothDresserView.h */,
+				B35338CD1B52B28F00B2BE3E /* UIClothDresserView.m */,
+				B35338CF1B52B29800B2BE3E /* UIClothDresserView.xib */,
+				B35338D71B52B71300B2BE3E /* UIHeaderClothDresserView.m */,
+				B35338D81B52B71300B2BE3E /* UIHeaderClothDresserView.xib */,
+			);
+			path = Dresser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,6 +602,7 @@
 				480C7CBF1B36D4F900D4E585 /* DanielCraigButton.png in Resources */,
 				4846DA751B45651F006C62DC /* skirt1.png in Resources */,
 				4846DA801B45652A006C62DC /* teeShirt1.png in Resources */,
+				B35338E01B52EBB400B2BE3E /* UIResultFilterView.xib in Resources */,
 				4846DA6E1B456516006C62DC /* pant3.png in Resources */,
 				4846DA861B45652A006C62DC /* teeShirt7.png in Resources */,
 				4846DA831B45652A006C62DC /* teeShirt4.png in Resources */,
@@ -567,11 +613,13 @@
 				480C7C7E1B332ACC00D4E585 /* UITagsView.xib in Resources */,
 				4846DA841B45652A006C62DC /* teeShirt5.png in Resources */,
 				48BB71DF1B318AE200641F76 /* UICostumeViewController.xib in Resources */,
+				B35338E51B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib in Resources */,
 				480C7CB01B36899700D4E585 /* UIBubbleContactView.xib in Resources */,
 				488975031B00928400E63E90 /* LaunchScreen.xib in Resources */,
 				4846DA761B45651F006C62DC /* skirt2.png in Resources */,
 				4846DA811B45652A006C62DC /* teeShirt2.png in Resources */,
 				4846DA6F1B456516006C62DC /* pant4.png in Resources */,
+				B35338D01B52B29800B2BE3E /* UIClothDresserView.xib in Resources */,
 				480C7CAB1B3687EC00D4E585 /* UIBubbleContactItemView.xib in Resources */,
 				480C7C831B332B6600D4E585 /* UIClothTypeChoicesView.xib in Resources */,
 				480C7CBD1B36D4F300D4E585 /* DanielCraigButton@2x.png in Resources */,
@@ -584,6 +632,7 @@
 				480C7CCA1B36F51B00D4E585 /* UIFilterItemView.xib in Resources */,
 				480C7C881B332C1A00D4E585 /* UIClothTypeView.xib in Resources */,
 				4846DA851B45652A006C62DC /* teeShirt6.png in Resources */,
+				B35338DA1B52B71300B2BE3E /* UIHeaderClothDresserView.xib in Resources */,
 				488975001B00928400E63E90 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,16 +653,21 @@
 				48BB71D41B31647500641F76 /* UIDresserViewController.m in Sources */,
 				48BB71CF1B31645500641F76 /* UICameraViewController.m in Sources */,
 				480C7CAA1B3687EC00D4E585 /* UIBubbleContactItemView.m in Sources */,
+				B35338D91B52B71300B2BE3E /* UIHeaderClothDresserView.m in Sources */,
 				480C7C861B332C0F00D4E585 /* UIClothTypeView.m in Sources */,
+				B35338CE1B52B28F00B2BE3E /* UIClothDresserView.m in Sources */,
 				488974FB1B00928400E63E90 /* ViewController.m in Sources */,
 				480C7C9B1B33320700D4E585 /* SeasonClothTypeInfo.m in Sources */,
 				488974F81B00928400E63E90 /* AppDelegate.m in Sources */,
+				B35338E41B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.m in Sources */,
+				B35338E81B538F8900B2BE3E /* CostumeResultsInfo.m in Sources */,
 				4869881B1B022ACF0081A0F9 /* NSObject-Utility.m in Sources */,
 				480C7CA51B3687A300D4E585 /* HEBubbleViewItem.m in Sources */,
 				48BB71DE1B318AE200641F76 /* UICostumeViewController.m in Sources */,
 				48BB71E91B329BD300641F76 /* ClothTypeHelper.m in Sources */,
 				480C7CA41B3687A300D4E585 /* HEBubbleView.m in Sources */,
 				480C7C811B332B5C00D4E585 /* UIClothTypeChoicesView.m in Sources */,
+				B35338DE1B52EBA800B2BE3E /* UIResultFilterView.m in Sources */,
 				488975251B00944A00E63E90 /* UIView-Nib.m in Sources */,
 				48D222B21B315458006C2B35 /* UIMainViewController.m in Sources */,
 				4889752A1B00C02500E63E90 /* viewLogic.m in Sources */,

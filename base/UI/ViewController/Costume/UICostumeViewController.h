@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UITagsView.h"
 #import "UIFiltersView.h"
+#import "UIResultFilterView.h"
 
 @interface UICostumeViewController : UIViewController <UIFilterItemViewDelegate, UITagsViewDelegate>
 {
@@ -24,11 +25,15 @@
     
     __weak IBOutlet UILabel *_filterLabel;
     
+    __weak IBOutlet UIView *_resultsPlaceholder;
+    
     UITagsView *_tagsView;
     
     UIFiltersView *_seasonFiltersView;
     UIFiltersView *_eventFiltersView;
     UIFiltersView *_colorFiltersView;
+    
+    UIResultFilterView *_resultFilterView;
 }
 
 @end

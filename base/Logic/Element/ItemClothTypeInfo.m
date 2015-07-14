@@ -10,6 +10,14 @@
 
 @implementation ItemClothTypeInfo
 
++ (ItemClothTypeInfo *)itemClothWithType:(ItemClothType)itemClothType
+{
+    ItemClothTypeInfo *itemInfo = [[ItemClothTypeInfo alloc] init];
+    itemInfo.itemType = itemClothType;
+    
+    return itemInfo;
+}
+
 - (UIColor *)color
 {
     switch (self.itemType)

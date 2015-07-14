@@ -22,4 +22,6 @@
 @property (nonatomic, strong) ColorClothTypeInfo *colorTypeInfo;
 @property (nonatomic, strong) ItemClothTypeInfo *itemTypeInfo;
 
++ (Cloth *)clothWithImagePath:(NSString *)imagePath withSeason:(SeasonClothTypeInfo *)season withEvent:(EventClothTypeInfo *)event withColor:(ColorClothTypeInfo *)color withItemInfo:(ItemClothTypeInfo *)itemInfo;
+
 @end

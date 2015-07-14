@@ -23,7 +23,6 @@ typedef enum : NSUInteger {
 
 + (ColorClothTypeInfo *)colorWithType:(ColorClothType)colorClothType;
 
-
 @property (nonatomic, unsafe_unretained) ColorClothType colorType;
 
 @end

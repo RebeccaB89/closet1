@@ -18,6 +18,8 @@ typedef enum : NSUInteger
 
 @interface ItemClothTypeInfo : ClothType
 
++ (ItemClothTypeInfo *)itemClothWithType:(ItemClothType)itemClothType;
+
 @property (nonatomic, unsafe_unretained) ItemClothType itemType;
 
 @end

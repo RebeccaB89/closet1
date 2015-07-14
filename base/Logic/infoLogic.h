@@ -10,7 +10,18 @@
 //#import "BaseSerializeData.h"
 
 @interface InfoLogic : NSObject
+{
+    NSMutableArray *_pants;
+    NSMutableArray *_teeShirts;
+    NSMutableArray *_skirts;
+    
+    NSMutableDictionary *_filterCloths;
+}
 
 + (InfoLogic *)sharedInstance;
+
+- (NSDictionary *)cloths;
+- (NSDictionary *)filters;
+- (NSArray *)clothsForClothTypeFilters:(NSArray *)filters;
 
 @end

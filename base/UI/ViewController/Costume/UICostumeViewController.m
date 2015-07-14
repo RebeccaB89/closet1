@@ -60,6 +60,20 @@
     _colorFiltersView.clothTypeFilters = colorFilters;
     [_filter3PlaceHolder addSubview:_colorFiltersView];
 
+    _resultFilterView = [UIResultFilterView loadFromNib];
+    _resultFilterView.frame = _resultsPlaceholder.bounds;
+    _resultFilterView.autoresizingMask = CELL_FULL_AUTORESIZINGMASK;
+    [_resultsPlaceholder addSubview:_resultFilterView];
+}
+
+- (void)reloadData
+{
+    NSMutableArray *query = [NSMutableArray array];
+    for (ClothType *clothType in [_tagsView clothTypeTags])
+    {
+        [query addObject:clothType.strType];
+    }
+    [_resultFilterView updateQueryFilter:query];
 }
 
 - (void)layoutData
@@ -71,6 +85,13 @@
     }
     
     _filterLabel.text = filter;
+    
+    NSMutableArray *query = [NSMutableArray array];
+    for (ClothType *clothType in [_tagsView clothTypeTags])
+    {
+        [query addObject:clothType];
+    }
+    [_resultFilterView updateQueryFilter:query];
 }
 
 - (int)numOfColorTypeInTagsView
