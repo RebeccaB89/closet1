@@ -14,8 +14,6 @@
 {
     NSMutableArray *seasons = [NSMutableArray array];
 
-   // [seasons addObject:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType]];
-
     for (int i = summerSeasonClothType; i <= springSeasonClothType; i++)
     {
         [seasons addObject:[SeasonClothTypeInfo seasonWithType:i]];

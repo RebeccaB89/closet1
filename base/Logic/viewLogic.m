@@ -10,6 +10,7 @@
 #import "UICameraViewController.h"
 #import "UIDresserViewController.h"
 #import "UICostumeViewController.h"
+#import "FilterLogic.h"
 
 @implementation viewLogic
 
@@ -63,6 +64,7 @@ static viewLogic *sharedInstance = nil;
 
 - (void)applicationLaunched
 {
+    [[FilterLogic sharedInstance] clothTypes];
     [self presentMainViewController];
 
     return;

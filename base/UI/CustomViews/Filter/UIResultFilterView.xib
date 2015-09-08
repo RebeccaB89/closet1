@@ -22,7 +22,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Aky-Ry-dZy" secondAttribute="trailing" id="9q1-e9-fJi"/>
                 <constraint firstItem="Aky-Ry-dZy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DfM-1C-GBe"/>

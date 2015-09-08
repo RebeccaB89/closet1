@@ -16,6 +16,8 @@ typedef enum : NSUInteger {
     pinkColorClothType,
     purpleColorClothType,
     orangeColorClothType,
+    greenColorClothType,
+    grayColorClothType,
     multiColorColorClothType
 } ColorClothType;
 

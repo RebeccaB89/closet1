@@ -16,6 +16,7 @@
 @interface Cloth : Element
 
 @property (nonatomic, strong) NSString *imagePath;
+@property (nonatomic, strong) NSString *imageName;
 
 @property (nonatomic, strong) SeasonClothTypeInfo *seasonTypeInfo;
 @property (nonatomic, strong) EventClothTypeInfo *eventTypeInfo;

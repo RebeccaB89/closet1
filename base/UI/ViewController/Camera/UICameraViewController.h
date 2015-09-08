@@ -14,10 +14,17 @@
     
     __weak IBOutlet UIButton *_libraryButton;
     __weak IBOutlet UIImageView *_photoImageView;
+    
+    __weak IBOutlet UIButton *_addButton;
 }
 
 - (IBAction)cameraClicked:(UIButton *)sender;
 
 - (IBAction)libraryClicked:(UIButton *)sender;
+
+- (IBAction)addClicked:(UIButton *)sender;
+
+- (IBAction)sharedClicked:(UIButton *)sender;
+
 
 @end

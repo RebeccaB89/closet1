@@ -9,6 +9,7 @@
 #import "UIResultFilterView.h"
 #import "UIResultFilterCollectionViewCell.h"
 #import "infoLogic.h"
+#import "FilterLogic.h"
 
 @implementation UIResultFilterView
 
@@ -45,7 +46,7 @@
     }
     
     noItemsLabel.bounds = self.bounds;
-    noItemsLabel.textColor = [UIColor greenColor];
+    noItemsLabel.textColor = [UIColor grayColor];
     noItemsLabel.hidden = !show;
     noItemsLabel.text = NLS(@"No Results");
     
@@ -63,13 +64,62 @@
 
 - (void)updateQueryFilter:(NSArray *)searchQueryFilter
 {
-    NSArray *results = [[InfoLogic sharedInstance] clothsForClothTypeFilters:searchQueryFilter];
-    results = results;
+    _queryFilter = searchQueryFilter;
+    
+    [self reloadData];
+    [self layoutData];
 }
 
 - (void)reloadData
 {
+    NSArray *clothsFiltered = [[InfoLogic sharedInstance] clothsForClothTypeFilters:_queryFilter];
+    _costumeResults = [self resultCostumesForClothsFiltered:clothsFiltered];
+}
+
+- (NSArray *)resultCostumesForClothsFiltered:(NSArray *)clothsFiltered
+{
+    NSMutableArray *results = [NSMutableArray array];
     
+    NSDictionary *clothFiteredByItemType = [[FilterLogic sharedInstance] clothsFiteredByItemType:clothsFiltered];
+    
+    NSArray *upItems = [clothFiteredByItemType objectForKey:[ItemClothTypeInfo keyForUpItem]];
+    NSArray *bottomItems = [clothFiteredByItemType objectForKey:[ItemClothTypeInfo keyForBottomItem]];
+    
+    NSUInteger biggerCounter = [self biggerCountOfCloth:clothFiteredByItemType];
+    
+    for (int i = 0; i < biggerCounter; i++)
+    {
+        CostumeResultsInfo *costumeResult = [[CostumeResultsInfo alloc] init];
+        int index = fmod(i, [upItems count]);
+        Cloth *upCloth = [upItems objectAtIndex:index];
+        index = fmod(i, [bottomItems count]);
+        Cloth *bottomCloth = [bottomItems objectAtIndex:index];
+
+        costumeResult.upClothInfo = upCloth;
+        costumeResult.bottomClothInfo = bottomCloth;
+        
+        [results addObject:costumeResult];
+    }
+    
+    return results;
+}
+
+- (NSUInteger)biggerCountOfCloth:(NSDictionary *)cloths
+{
+    NSArray *keys = [cloths allKeys];
+
+    NSUInteger count = 0;
+    for (NSString *key in keys)
+    {
+        NSArray *value = [cloths objectForKey:key];
+        NSUInteger tempCount = [value count];
+        if (tempCount > count)
+        {
+            count = tempCount;
+        }
+    }
+    
+    return count;
 }
 
 - (void)layoutData

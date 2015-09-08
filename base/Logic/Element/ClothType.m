@@ -10,6 +10,16 @@
 
 @implementation ClothType
 
++ (NSArray *)allClothType
+{
+    return nil;
+}
+
++ (NSString *)clothTypeStr
+{
+    return @"Cloth";
+}
+
 - (UIColor *)color
 {
     return nil;

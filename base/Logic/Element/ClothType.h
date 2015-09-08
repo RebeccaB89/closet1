@@ -10,6 +10,8 @@
 
 @interface ClothType : Element
 
++ (NSArray *)allClothType;
++ (NSString *)clothTypeStr;
 - (UIColor *)color;
 - (NSString *)strType;
 - (UIImage *)image;

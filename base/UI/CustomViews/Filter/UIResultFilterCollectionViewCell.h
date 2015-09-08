@@ -10,6 +10,11 @@
 #import "CostumeResultsInfo.h"
 
 @interface UIResultFilterCollectionViewCell : UICollectionViewCell
+{
+    __weak IBOutlet UIImageView *_upImageView;
+    
+    __weak IBOutlet UIImageView *_bottomImageView;
+}
 
 @property (nonatomic, strong) CostumeResultsInfo *costumeResultInfo;
 

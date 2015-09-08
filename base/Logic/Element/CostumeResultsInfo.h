@@ -10,7 +10,7 @@
 #import "Cloth.h"
 @interface CostumeResultsInfo : Element
 
-@property (nonatomic, strong) Cloth *_upClothInfo;
-@property (nonatomic, strong) Cloth *_bottomClothInfo;
+@property (nonatomic, strong) Cloth *upClothInfo;
+@property (nonatomic, strong) Cloth *bottomClothInfo;
 
 @end

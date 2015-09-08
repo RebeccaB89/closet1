@@ -24,7 +24,18 @@
 
 - (void)layoutData
 {
-    
+    if (_costumeResultInfo)
+    {
+        UIImage *upImage = IMAGE(_costumeResultInfo.upClothInfo.imagePath);
+        _upImageView.image = upImage;
+        UIImage *bottomImage = IMAGE(_costumeResultInfo.bottomClothInfo.imagePath);
+        _bottomImageView.image = bottomImage;
+    }
+    else
+    {
+        _upImageView.image = nil;
+        _bottomImageView.image = nil;
+    }
 }
 
 @end

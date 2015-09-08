@@ -18,6 +18,16 @@
     return colorInfo;
 }
 
++ (NSArray *)allClothType
+{
+    return [NSArray arrayWithObjects:[ColorClothTypeInfo colorWithType:blackColorClothType], [ColorClothTypeInfo colorWithType:whiteColorClothType], [ColorClothTypeInfo colorWithType:redColorClothType], [ColorClothTypeInfo colorWithType:blueColorClothType],[ColorClothTypeInfo colorWithType:pinkColorClothType], [ColorClothTypeInfo colorWithType:purpleColorClothType], [ColorClothTypeInfo colorWithType:orangeColorClothType], [ColorClothTypeInfo colorWithType:greenColorClothType], [ColorClothTypeInfo colorWithType:grayColorClothType], [ColorClothTypeInfo colorWithType:multiColorColorClothType], nil];
+}
+
++ (NSString *)clothTypeStr
+{
+    return @"Color";
+}
+
 - (NSString *)strType
 {
     switch (self.colorType)
@@ -46,7 +56,12 @@
         case whiteColorClothType:
             return NLS(@"White");
             break;
-            
+        case greenColorClothType:
+            return NLS(@"Green");
+            break;
+        case grayColorClothType:
+            return NLS(@"Gray");
+            break;
         default:
             return NLS(@"Black");
     }
@@ -77,8 +92,14 @@
         case redColorClothType:
             return [UIColor redColor];
             break;
+        case greenColorClothType:
+            return [UIColor greenColor];
+            break;
         case whiteColorClothType:
             return [UIColor whiteColor];
+            break;
+        case grayColorClothType:
+            return [UIColor lightGrayColor];
             break;
             
         default:

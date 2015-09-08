@@ -8,6 +8,8 @@
 
 #import "UIMainViewController.h"
 #import "viewLogic.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface UIMainViewController ()
 
@@ -38,6 +40,11 @@
     
     _settingsButton.layer.cornerRadius = 20.0;
     _settingsButton.layer.borderWidth = 0.0;
+    
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    loginButton.center = self.view.center;
+    loginButton.bottom = self.view.bottom - 20;
+    [self.view addSubview:loginButton];
 }
 
 - (void)didReceiveMemoryWarning

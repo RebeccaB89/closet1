@@ -20,6 +20,15 @@ typedef enum : NSUInteger
 
 + (ItemClothTypeInfo *)itemClothWithType:(ItemClothType)itemClothType;
 
++ (NSString *)keyForUpItem;
++ (NSString *)keyForBottomItem;
++ (NSString *)keyForAccessoryItem;
+
+- (BOOL)isUPItem;
+- (BOOL)isBottomItem;
+- (BOOL)isAccessoryItem;
+- (NSString *)keyItemTypeStr;
+
 @property (nonatomic, unsafe_unretained) ItemClothType itemType;
 
 @end

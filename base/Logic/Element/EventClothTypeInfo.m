@@ -18,6 +18,15 @@
     return eventInfo;
 }
 
++ (NSArray *)allClothType
+{
+    return [NSArray arrayWithObjects:[EventClothTypeInfo eventWithType:dateEventClothType], [EventClothTypeInfo eventWithType:workEventClothType], [EventClothTypeInfo eventWithType:sportEventClothType], [EventClothTypeInfo eventWithType:interviewEventClothType], nil];
+}
+
++ (NSString *)clothTypeStr
+{
+    return @"Event";
+}
 
 - (UIColor *)color
 {

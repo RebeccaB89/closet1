@@ -57,49 +57,62 @@ static InfoLogic *sharedInstance = nil;
 
 - (void)loadDataHardCoded
 {
-    Cloth *pant1 = [Cloth clothWithImagePath:@"pant1" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:interviewEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
+    Cloth *pant1 = [Cloth clothWithImagePath:@"pant1" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:greenColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
     [self addToArray:_pants cloth:pant1];
     
-    Cloth *pant2 = [Cloth clothWithImagePath:@"pant2" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:interviewEventClothType] withColor:[ColorClothTypeInfo colorWithType:blueColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
+    Cloth *pant2 = [Cloth clothWithImagePath:@"pant2" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:redColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
     [self addToArray:_pants cloth:pant2];
 
-    Cloth *pant3 = [Cloth clothWithImagePath:@"pant3" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:interviewEventClothType] withColor:[ColorClothTypeInfo colorWithType:blueColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
+    Cloth *pant3 = [Cloth clothWithImagePath:@"pant3"
+                                  withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType]
+                                   withEvent:[EventClothTypeInfo eventWithType:sportEventClothType]
+                                   withColor:[ColorClothTypeInfo colorWithType:pinkColorClothType]
+                                withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
     [self addToArray:_pants cloth:pant3];
 
-    Cloth *pant4 = [Cloth clothWithImagePath:@"pant4" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:pinkColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
-    [self addToArray:_pants cloth:pant4];
+//    Cloth *pant4 = [Cloth clothWithImagePath:@"pant4" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:pinkColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
+//    [self addToArray:_pants cloth:pant4];
+//
+//    Cloth *pant5 = [Cloth clothWithImagePath:@"pant5" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blueColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
+//    [self addToArray:_pants cloth:pant5];
 
-    Cloth *pant5 = [Cloth clothWithImagePath:@"pant5" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blueColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
-    [self addToArray:_pants cloth:pant5];
-
-    Cloth *skirt1 = [Cloth clothWithImagePath:@"skirt1" withSeason:[SeasonClothTypeInfo seasonWithType:fallSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:sportEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
+    Cloth *skirt1 = [Cloth clothWithImagePath:@"skirt1" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:multiColorColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
     [self addToArray:_skirts cloth:skirt1];
 
-    Cloth *skirt2 = [Cloth clothWithImagePath:@"skirt2" withSeason:[SeasonClothTypeInfo seasonWithType:fallSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:sportEventClothType] withColor:[ColorClothTypeInfo colorWithType:orangeColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
+    Cloth *skirt2 = [Cloth clothWithImagePath:@"skirt2" withSeason:[SeasonClothTypeInfo seasonWithType:fallSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:redColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
     [self addToArray:_skirts cloth:skirt2];
 
-    Cloth *skirt3 = [Cloth clothWithImagePath:@"skirt3" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
+    Cloth *skirt3 = [Cloth clothWithImagePath:@"skirt3" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:grayColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
     [self addToArray:_skirts cloth:skirt3];
 
-    Cloth *skirt4 = [Cloth clothWithImagePath:@"skirt4" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:sportEventClothType] withColor:[ColorClothTypeInfo colorWithType:whiteColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
+    Cloth *skirt4 = [Cloth clothWithImagePath:@"skirt4" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:interviewEventClothType] withColor:[ColorClothTypeInfo colorWithType:pinkColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
     [self addToArray:_skirts cloth:skirt4];
     
-    Cloth *teeShirt1 = [Cloth clothWithImagePath:@"teeShirt1" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:sportEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
+    Cloth *skirt5 = [Cloth clothWithImagePath:@"skirt5" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blueColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
+    [self addToArray:_skirts cloth:skirt5];
+    
+    Cloth *skirt6 = [Cloth clothWithImagePath:@"skirt6" withSeason:[SeasonClothTypeInfo seasonWithType:fallSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
+    [self addToArray:_skirts cloth:skirt6];
+    
+    Cloth *skirt7 = [Cloth clothWithImagePath:@"skirt7" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:interviewEventClothType] withColor:[ColorClothTypeInfo colorWithType:pinkColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:skirtItemClothType]];
+    [self addToArray:_skirts cloth:skirt7];
+    
+    Cloth *teeShirt1 = [Cloth clothWithImagePath:@"teeShirt1" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:interviewEventClothType] withColor:[ColorClothTypeInfo colorWithType:redColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
     [self addToArray:_teeShirts cloth:teeShirt1];
 
-    Cloth *teeShirt2 = [Cloth clothWithImagePath:@"teeShirt2" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
+    Cloth *teeShirt2 = [Cloth clothWithImagePath:@"teeShirt2" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:sportEventClothType] withColor:[ColorClothTypeInfo colorWithType:orangeColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
     [self addToArray:_teeShirts cloth:teeShirt2];
 
-    Cloth *teeShirt3 = [Cloth clothWithImagePath:@"teeShirt3" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:blueColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
+    Cloth *teeShirt3 = [Cloth clothWithImagePath:@"teeShirt3" withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
     [self addToArray:_teeShirts cloth:teeShirt3];
 
-    Cloth *teeShirt4 = [Cloth clothWithImagePath:@"teeShirt4" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
+    Cloth *teeShirt4 = [Cloth clothWithImagePath:@"teeShirt4" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:sportEventClothType] withColor:[ColorClothTypeInfo colorWithType:grayColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
     [self addToArray:_teeShirts cloth:teeShirt4];
 
-    Cloth *teeShirt5 = [Cloth clothWithImagePath:@"teeShirt5" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:workEventClothType] withColor:[ColorClothTypeInfo colorWithType:orangeColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
+    Cloth *teeShirt5 = [Cloth clothWithImagePath:@"teeShirt5" withSeason:[SeasonClothTypeInfo seasonWithType:springSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:sportEventClothType] withColor:[ColorClothTypeInfo colorWithType:blueColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
     [self addToArray:_teeShirts cloth:teeShirt5];
 
-    Cloth *teeShirt6 = [Cloth clothWithImagePath:@"teeShirt6" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:multiColorColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
+    Cloth *teeShirt6 = [Cloth clothWithImagePath:@"teeShirt6" withSeason:[SeasonClothTypeInfo seasonWithType:fallSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:redColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];
     [self addToArray:_teeShirts cloth:teeShirt6];
 
     Cloth *teeShirt7 = [Cloth clothWithImagePath:@"teeShirt7" withSeason:[SeasonClothTypeInfo seasonWithType:winterSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:pinkColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:teeShirtItemClothType]];

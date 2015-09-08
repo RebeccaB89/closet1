@@ -18,6 +18,16 @@
     return seasonInfo;
 }
 
++ (NSArray *)allClothType
+{
+    return [NSArray arrayWithObjects:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType], [SeasonClothTypeInfo seasonWithType:winterSeasonClothType], [SeasonClothTypeInfo seasonWithType:fallSeasonClothType], [SeasonClothTypeInfo seasonWithType:springSeasonClothType], nil];
+}
+
++ (NSString *)clothTypeStr
+{
+    return @"Season";
+}
+
 - (UIColor *)color
 {
     switch (self.seasonType)
