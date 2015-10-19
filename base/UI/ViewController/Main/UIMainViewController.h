@@ -12,6 +12,7 @@ typedef enum : NSUInteger {
     cameraMainOptionType = 1,
     dresserMainOptionType,
     costumeMainOptionType,
+    settingsMainOptionType
 } MainOptionType;
 
 @interface UIMainViewController : UIViewController

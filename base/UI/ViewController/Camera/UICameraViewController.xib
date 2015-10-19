@@ -49,15 +49,6 @@
                         <action selector="addClicked:" destination="-1" eventType="touchUpInside" id="XIK-Fq-pvB"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9w-Wr-Iyz">
-                    <rect key="frame" x="136" y="71" width="49" height="30"/>
-                    <state key="normal" title="Shared">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="sharedClicked:" destination="-1" eventType="touchUpInside" id="L0f-io-KBB"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="247" y="469"/>

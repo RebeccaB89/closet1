@@ -49,6 +49,7 @@
 //    UIImage* image = [UIImage imageWithContentsOfFile:path];
 //    [self sendAction:path];
 //    return image;
+    id  d = [UIImage imageWithContentsOfFile:_clothInfo.imagePath];
     _imageView.image = [UIImage imageWithContentsOfFile:_clothInfo.imagePath];
     [_tableView reloadData];
 }

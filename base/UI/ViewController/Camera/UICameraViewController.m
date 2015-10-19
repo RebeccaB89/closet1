@@ -59,6 +59,7 @@
     cameraUI.mediaTypes =
     [UIImagePickerController availableMediaTypesForSourceType:
      UIImagePickerControllerSourceTypeCamera];
+    cameraUI.delegate = self;
     
     // Hides the controls for moving & scaling pictures, or for
     // trimming movies. To instead show the controls, use YES.
@@ -104,7 +105,8 @@
 {
     if (_currentClothToSharedInfo.image)
     {
-        _sharedFBbutton.shareContent = [[FacebookManager sharedInstance] contentToSharedForClothToShared:_currentClothToSharedInfo];
+        id d = [[FacebookManager sharedInstance] contentToSharedForClothToShared:_currentClothToSharedInfo];
+        _sharedFBbutton.shareContent = d;
     }
 }
 
@@ -135,6 +137,10 @@
     {
         ALAssetRepresentation *imageRep = [imageAsset defaultRepresentation];
         NSString *fileName = [imageRep filename];
+        if (!fileName)
+        {
+            fileName = @"currentImage";
+        }
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                              NSUserDomainMask, YES);
         NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -145,6 +151,7 @@
 
         _currentClothToSharedInfo.imageName = fileName;
         _currentClothToSharedInfo.imagePath = path;
+        
     };
     
     ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
@@ -163,32 +170,10 @@
     }
     
     UINewClothViewController *newClothVC = [UINewClothViewController loadFromNib];
-    newClothVC.clothInfo = [Cloth clothWithImagePath:_currentClothToSharedInfo.imagePath withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
-    [self.navigationController pushViewController:newClothVC animated:YES];
-}
-
-- (IBAction)sharedClicked:(UIButton *)sender
-{
-    if (!_currentClothToSharedInfo.image)
-    {
-        UIAlertView *aler = [[UIAlertView alloc] initWithTitle:NLS(@"SET PHOTO") message:NLS(@"Please choose image from library or take picture") delegate:nil cancelButtonTitle:NLS(@"OK") otherButtonTitles:nil];
-        [aler show];
-        return;
-    }
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-//                                                         NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString* path = [documentsDirectory stringByAppendingPathComponent:
-//                      @"test.png" ];
-//    NSData* data = UIImagePNGRepresentation(_photoImageView.image);
-//    [data writeToFile:path atomically:YES];
-
-    Cloth *cloth = [Cloth clothWithImagePath:_currentClothToSharedInfo.imagePath withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
-
-//    ClothToSharedInfo *clothToShared = [ClothToSharedInfo clothToSharedWithClothInfo:cloth];
     
-   // _sharedFBbutton.shareContent = [[FacebookManager sharedInstance] contentToSharedForClothToShared:clothToShared];
-    //[[FacebookManager sharedInstance] sharedClothToShared:clothToShared];
+    newClothVC.clothInfo = [Cloth clothWithImagePath:_currentClothToSharedInfo.imagePath withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
+    
+    [self.navigationController pushViewController:newClothVC animated:YES];
 }
 
 @end

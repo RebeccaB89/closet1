@@ -22,5 +22,6 @@
 - (void)presentCameraViewController;
 - (void)presentDresserViewController;
 - (void)presentCostumeViewController;
+- (void)presentSettingsViewController;
 
 @end

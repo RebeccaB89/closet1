@@ -72,6 +72,12 @@
 		B314DA451B57DA5C00BA53CA /* FilterLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = B314DA441B57DA5C00BA53CA /* FilterLogic.m */; };
 		B314DA4A1B57DCD400BA53CA /* UINewClothViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B314DA481B57DCD400BA53CA /* UINewClothViewController.m */; };
 		B314DA4B1B57DCD400BA53CA /* UINewClothViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B314DA491B57DCD400BA53CA /* UINewClothViewController.xib */; };
+		B350402E1BD4E310004A58DC /* UILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B350402C1BD4E310004A58DC /* UILoginViewController.m */; };
+		B350402F1BD4E310004A58DC /* UILoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B350402D1BD4E310004A58DC /* UILoginViewController.xib */; };
+		B35040321BD4E555004A58DC /* UserInfoLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = B35040311BD4E555004A58DC /* UserInfoLogic.m */; };
+		B350403B1BD50F33004A58DC /* UISettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35040391BD50F33004A58DC /* UISettingsViewController.m */; };
+		B350403C1BD50F33004A58DC /* UISettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B350403A1BD50F33004A58DC /* UISettingsViewController.xib */; };
+		B35040401BD528B6004A58DC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B350403F1BD528B6004A58DC /* CoreLocation.framework */; };
 		B35338CE1B52B28F00B2BE3E /* UIClothDresserView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338CD1B52B28F00B2BE3E /* UIClothDresserView.m */; };
 		B35338D01B52B29800B2BE3E /* UIClothDresserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35338CF1B52B29800B2BE3E /* UIClothDresserView.xib */; };
 		B35338D91B52B71300B2BE3E /* UIHeaderClothDresserView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338D71B52B71300B2BE3E /* UIHeaderClothDresserView.m */; };
@@ -210,6 +216,15 @@
 		B314DA471B57DCD400BA53CA /* UINewClothViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINewClothViewController.h; sourceTree = "<group>"; };
 		B314DA481B57DCD400BA53CA /* UINewClothViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINewClothViewController.m; sourceTree = "<group>"; };
 		B314DA491B57DCD400BA53CA /* UINewClothViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UINewClothViewController.xib; sourceTree = "<group>"; };
+		B350402B1BD4E310004A58DC /* UILoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILoginViewController.h; sourceTree = "<group>"; };
+		B350402C1BD4E310004A58DC /* UILoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILoginViewController.m; sourceTree = "<group>"; };
+		B350402D1BD4E310004A58DC /* UILoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UILoginViewController.xib; sourceTree = "<group>"; };
+		B35040301BD4E555004A58DC /* UserInfoLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoLogic.h; sourceTree = "<group>"; };
+		B35040311BD4E555004A58DC /* UserInfoLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoLogic.m; sourceTree = "<group>"; };
+		B35040381BD50F33004A58DC /* UISettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISettingsViewController.h; sourceTree = "<group>"; };
+		B35040391BD50F33004A58DC /* UISettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISettingsViewController.m; sourceTree = "<group>"; };
+		B350403A1BD50F33004A58DC /* UISettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UISettingsViewController.xib; sourceTree = "<group>"; };
+		B350403F1BD528B6004A58DC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B35338CC1B52B28F00B2BE3E /* UIClothDresserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIClothDresserView.h; sourceTree = "<group>"; };
 		B35338CD1B52B28F00B2BE3E /* UIClothDresserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIClothDresserView.m; sourceTree = "<group>"; };
 		B35338CF1B52B29800B2BE3E /* UIClothDresserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIClothDresserView.xib; sourceTree = "<group>"; };
@@ -276,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35040401BD528B6004A58DC /* CoreLocation.framework in Frameworks */,
 				B3AEEE8B1B8C477E006AB4C9 /* FBSDKLoginKit.framework in Frameworks */,
 				B3AEEE8A1B8C477C006AB4C9 /* FBSDKCoreKit.framework in Frameworks */,
 				B3AEEE8C1B8C477E006AB4C9 /* FBSDKShareKit.framework in Frameworks */,
@@ -418,6 +434,7 @@
 		488974E61B00928300E63E90 = {
 			isa = PBXGroup;
 			children = (
+				B350403F1BD528B6004A58DC /* CoreLocation.framework */,
 				488974F11B00928300E63E90 /* base */,
 				488974F01B00928300E63E90 /* Products */,
 			);
@@ -434,6 +451,7 @@
 		488974F11B00928300E63E90 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				B35040411BD528C4004A58DC /* Frameworks */,
 				480C7CB61B36D49700D4E585 /* Resources */,
 				486988151B02275D0081A0F9 /* Shared */,
 				4889751C1B00940F00E63E90 /* 3rdParty */,
@@ -473,6 +491,8 @@
 				B3AEEE8E1B8C4A6D006AB4C9 /* FacebookManager.m */,
 				B3AE93371B8CB67B00190576 /* ConnectionManager.h */,
 				B3AE93381B8CB67B00190576 /* ConnectionManager.m */,
+				B35040301BD4E555004A58DC /* UserInfoLogic.h */,
+				B35040311BD4E555004A58DC /* UserInfoLogic.m */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -489,6 +509,8 @@
 		4889751A1B00931100E63E90 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B35040371BD50F11004A58DC /* Settings */,
+				B350402A1BD4E2ED004A58DC /* Login */,
 				B314DA461B57DCAD00BA53CA /* NewCloth */,
 				48D222AE1B31516B006C2B35 /* Costume */,
 				48D222AD1B315113006C2B35 /* Dresser */,
@@ -619,6 +641,33 @@
 				B314DA491B57DCD400BA53CA /* UINewClothViewController.xib */,
 			);
 			path = NewCloth;
+			sourceTree = "<group>";
+		};
+		B350402A1BD4E2ED004A58DC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B350402B1BD4E310004A58DC /* UILoginViewController.h */,
+				B350402C1BD4E310004A58DC /* UILoginViewController.m */,
+				B350402D1BD4E310004A58DC /* UILoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B35040371BD50F11004A58DC /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B35040381BD50F33004A58DC /* UISettingsViewController.h */,
+				B35040391BD50F33004A58DC /* UISettingsViewController.m */,
+				B350403A1BD50F33004A58DC /* UISettingsViewController.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B35040411BD528C4004A58DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B35338CB1B52B25600B2BE3E /* Dresser */ = {
@@ -763,6 +812,7 @@
 				480C7CBF1B36D4F900D4E585 /* DanielCraigButton.png in Resources */,
 				4846DA751B45651F006C62DC /* skirt1.png in Resources */,
 				4846DA801B45652A006C62DC /* teeShirt1.png in Resources */,
+				B350403C1BD50F33004A58DC /* UISettingsViewController.xib in Resources */,
 				B35338E01B52EBB400B2BE3E /* UIResultFilterView.xib in Resources */,
 				4846DA6E1B456516006C62DC /* pant3.png in Resources */,
 				4846DA861B45652A006C62DC /* teeShirt7.png in Resources */,
@@ -789,6 +839,7 @@
 				4846DA6D1B456516006C62DC /* pant2.png in Resources */,
 				480C7CBB1B36D4CB00D4E585 /* XSimbol@2x.png in Resources */,
 				4846DA781B45651F006C62DC /* skirt4.png in Resources */,
+				B350402F1BD4E310004A58DC /* UILoginViewController.xib in Resources */,
 				4846DA6C1B456516006C62DC /* pant1.png in Resources */,
 				4846DA771B45651F006C62DC /* skirt3.png in Resources */,
 				480C7CCA1B36F51B00D4E585 /* UIFilterItemView.xib in Resources */,
@@ -813,10 +864,12 @@
 				B3AE936A1B8CC2DE00190576 /* SFBasicClient.m in Sources */,
 				480C7C981B33318900D4E585 /* EventClothTypeInfo.m in Sources */,
 				B3AE93601B8CC2DE00190576 /* AFHTTPClient.m in Sources */,
+				B350403B1BD50F33004A58DC /* UISettingsViewController.m in Sources */,
 				480C7C791B32E91C00D4E585 /* infoLogic.m in Sources */,
 				488975261B00944A00E63E90 /* UIViewController-Nib.m in Sources */,
 				48BB71D41B31647500641F76 /* UIDresserViewController.m in Sources */,
 				48BB71CF1B31645500641F76 /* UICameraViewController.m in Sources */,
+				B35040321BD4E555004A58DC /* UserInfoLogic.m in Sources */,
 				480C7CAA1B3687EC00D4E585 /* UIBubbleContactItemView.m in Sources */,
 				B3AE936F1B8CC2DE00190576 /* SFUtils.m in Sources */,
 				B3AE93681B8CC2DE00190576 /* UIImageView+AFNetworking.m in Sources */,
@@ -852,6 +905,7 @@
 				486988181B0227BB0081A0F9 /* Shared.m in Sources */,
 				480C7C8F1B332F1500D4E585 /* ClothType.m in Sources */,
 				480C7C8C1B332DDD00D4E585 /* TLTagsControl.m in Sources */,
+				B350402E1BD4E310004A58DC /* UILoginViewController.m in Sources */,
 				B3AE936D1B8CC2DE00190576 /* SFOAuth1Client.m in Sources */,
 				B3AE93621B8CC2DE00190576 /* AFImageRequestOperation.m in Sources */,
 				48BB71E31B31B58E00641F76 /* Element.m in Sources */,
@@ -969,7 +1023,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eyal Shaked (M46SVD74Z4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haggai Elazar (F8339UX648)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/base/3rdParty/Facebook",
@@ -981,7 +1035,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e8dda3bb-b3f3-4382-a8d7-a161baa8f0bb";
+				PROVISIONING_PROFILE = "c06d0601-797c-4db1-b0ac-d9cff9274eb2";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -994,7 +1048,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eyal Shaked (M46SVD74Z4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Haggai Elazar (F8339UX648)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/base/3rdParty/Facebook",
@@ -1006,7 +1060,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e8dda3bb-b3f3-4382-a8d7-a161baa8f0bb";
+				PROVISIONING_PROFILE = "c06d0601-797c-4db1-b0ac-d9cff9274eb2";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

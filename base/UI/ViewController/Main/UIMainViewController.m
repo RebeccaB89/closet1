@@ -8,8 +8,7 @@
 
 #import "UIMainViewController.h"
 #import "viewLogic.h"
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 
 @interface UIMainViewController ()
 
@@ -41,10 +40,10 @@
     _settingsButton.layer.cornerRadius = 20.0;
     _settingsButton.layer.borderWidth = 0.0;
     
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    loginButton.bottom = self.view.bottom - 20;
-    [self.view addSubview:loginButton];
+    _settingsButton.tag = settingsMainOptionType;
+    _settingsButton.layer.cornerRadius = 20.0;
+    _settingsButton.layer.borderWidth = 0.0;
+    [_settingsButton setTitle:NLS(@"Settings") forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +67,11 @@
     [[viewLogic sharedInstance] presentCostumeViewController];
 }
 
+- (void)openSettings
+{
+    [[viewLogic sharedInstance] presentSettingsViewController];
+}
+
 - (IBAction)mainButtonClicked:(UIButton *)sender
 {
     MainOptionType optionType = (MainOptionType)sender.tag;
@@ -83,7 +87,9 @@
         case costumeMainOptionType:
             [self openCostume];
             break;
-            
+        case settingsMainOptionType:
+            [self openSettings];
+            break;
         default:
             break;
     }

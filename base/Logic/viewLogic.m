@@ -10,7 +10,12 @@
 #import "UICameraViewController.h"
 #import "UIDresserViewController.h"
 #import "UICostumeViewController.h"
+#import "UILoginViewController.h"
+#import "UISettingsViewController.h"
+
 #import "FilterLogic.h"
+#import "UserInfoLogic.h"
+#import "FacebookManager.h"
 
 @implementation viewLogic
 
@@ -34,6 +39,8 @@ static viewLogic *sharedInstance = nil;
     
     if (self)
     {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fcbkStatusChanged:) name:FACEBOOK_STATUS_USER_CHANGED object:nil];
+
     }
     
     return self;
@@ -65,9 +72,26 @@ static viewLogic *sharedInstance = nil;
 - (void)applicationLaunched
 {
     [[FilterLogic sharedInstance] clothTypes];
-    [self presentMainViewController];
+    [self presentFirstScreenAccordingToLoginState];
+}
 
-    return;
+- (void)presentFirstScreenAccordingToLoginState
+{
+    if ([[UserInfoLogic sharedInstance] isLogin])
+    {
+        [self presentMainViewController];
+    }
+    else
+    {
+        [self presentLoginViewController];
+    }
+}
+
+- (void)presentLoginViewController
+{
+    UILoginViewController *loginViewController = [UILoginViewController loadFromNib];
+    
+    [self presentViewController:loginViewController animated:NO onWindow:YES completion:nil];
 }
 
 - (void)presentMainViewController
@@ -79,7 +103,6 @@ static viewLogic *sharedInstance = nil;
     UINavigationController *nav = NAVIGATION_CONTROLLER(_mainViewController);
     
     [self presentViewController:nav animated:NO onWindow:YES completion:nil];
-
 }
 
 - (void)presentCameraViewController
@@ -102,5 +125,23 @@ static viewLogic *sharedInstance = nil;
     
     [_mainViewController.navigationController pushViewController:costumeViewController animated:YES];
 }
+
+- (void)presentSettingsViewController
+{
+    UISettingsViewController *settingsViewController = [UISettingsViewController loadFromNib];
+    
+    [_mainViewController.navigationController pushViewController:settingsViewController animated:YES];
+}
+
+#pragma mark - notifications
+
+/* Notifications */
+
+- (void)fcbkStatusChanged:(NSNotification *)note
+{
+    [self presentFirstScreenAccordingToLoginState];
+}
+
+/* End Notifications */
 
 @end

@@ -24,7 +24,5 @@
 
 - (IBAction)addClicked:(UIButton *)sender;
 
-- (IBAction)sharedClicked:(UIButton *)sender;
-
 
 @end

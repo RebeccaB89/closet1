@@ -13,10 +13,13 @@
 
 #import "ClothToSharedInfo.h"
 
+#define FACEBOOK_STATUS_USER_CHANGED        @"FACEBOOK_STATUS_USER_CHANGED"
+
 @interface FacebookManager : NSObject
 
 + (FacebookManager *)sharedInstance;
 
+- (BOOL)isLogin;
 - (void)sharedClothToShared:(ClothToSharedInfo *)clothToShared;
 - (id)contentToSharedForClothToShared:(ClothToSharedInfo *)clothToShared;
 
