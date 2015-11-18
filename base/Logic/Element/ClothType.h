@@ -12,8 +12,11 @@
 
 + (NSArray *)allClothType;
 + (NSString *)clothTypeStr;
++ (NSString *)questionChooser;
+
 - (UIColor *)color;
 - (NSString *)strType;
 - (UIImage *)image;
+- (BOOL)canMultipleSelection;
 
 @end

@@ -28,6 +28,23 @@
     return @"Season";
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder])
+    {
+        self.seasonType = [aDecoder decodeIntForKey:@"seasonType"];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeInt:_seasonType forKey:@"seasonType"];
+}
+
 - (UIColor *)color
 {
     switch (self.seasonType)

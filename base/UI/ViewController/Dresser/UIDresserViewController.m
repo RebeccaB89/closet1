@@ -10,6 +10,8 @@
 #import "infoLogic.h"
 #import "UIClothDresserView.h"
 #import "UIHeaderClothDresserView.h"
+#import "UINewClothViewController.h"
+#import "viewLogic.h"
 
 @interface UIDresserViewController ()
 
@@ -28,6 +30,8 @@
 
     _clothsCollectionView.delegate = self;
     _clothsCollectionView.dataSource = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(infoDataChanged) name:INFOS_DATA_CHANGED object:nil];
     
     [self reloadData];
     [self layoutData];
@@ -48,6 +52,11 @@
 - (void)layoutData
 {
     [_clothsCollectionView reloadData];
+}
+
+- (void)openNewCloth:(Cloth *)cloth
+{
+    [[viewLogic sharedInstance] presentNewClothWithClothInfo:cloth];
 }
 
 /* UICollectionView Delegates */
@@ -105,6 +114,23 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    UIClothDresserView *clothDresserView = (UIClothDresserView *)[cell viewWithTag:2653];
+
+    [self openNewCloth:clothDresserView.clothInfo];
+}
+
 /* End UICollectionView Delegates */
+
+/* Notifications */
+
+- (void)infoDataChanged
+{
+    [self reloadData];
+    [self layoutData];
+}
+/* End Notifications  */
 
 @end

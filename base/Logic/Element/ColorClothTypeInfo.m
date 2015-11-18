@@ -28,6 +28,23 @@
     return @"Color";
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder])
+    {
+        self.colorType = [aDecoder decodeIntForKey:@"colorType"];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeInt:_colorType forKey:@"colorType"];
+}
+
 - (NSString *)strType
 {
     switch (self.colorType)

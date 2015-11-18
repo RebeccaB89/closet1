@@ -8,6 +8,7 @@
 
 #import "UINewClothViewController.h"
 #import "FilterLogic.h"
+#import "UICategoriesChooserScrollView.h"
 
 @interface UINewClothViewController ()
 {
@@ -21,11 +22,28 @@
 {
     [super viewDidLoad];
     
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
+    _categoryChooserScrollView = [UICategoriesChooserScrollView loadFromNib];
+    _categoryChooserScrollView.autoresizingMask = CELL_FULL_AUTORESIZINGMASK;
+    _categoryChooserScrollView.frame = _categoryPlaceholder.bounds;
     
+    [_categoryPlaceholder addSubview:_categoryChooserScrollView];
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+    [self.navigationItem setRightBarButtonItem:doneButton];
     [self reloadData];
     [self layoutData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [_categoryChooserScrollView updateClothInfo];
+}
+
+- (void)done
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)reloadData
@@ -42,31 +60,17 @@
 
 - (void)layoutData
 {
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-//                                                         NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString* path = clothInfo.imagePath;
-//    UIImage* image = [UIImage imageWithContentsOfFile:path];
-//    [self sendAction:path];
-//    return image;
-    id  d = [UIImage imageWithContentsOfFile:_clothInfo.imagePath];
-    _imageView.image = [UIImage imageWithContentsOfFile:_clothInfo.imagePath];
-    [_tableView reloadData];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return [[_clothTypes allKeys] count];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return nil;
+    UIImage *image = IMAGE(_clothInfo.imagePath);
+    if (image)
+    {
+        _imageView.image = image;
+    }
+    else
+    {
+        _imageView.image = [UIImage imageWithContentsOfFile:_clothInfo.imagePath];
+    }
+    
+    _categoryChooserScrollView.clothInfo = self.clothInfo;
 }
 
 @end

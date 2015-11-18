@@ -10,6 +10,7 @@
 #import "UIResultFilterCollectionViewCell.h"
 #import "infoLogic.h"
 #import "FilterLogic.h"
+#import "viewLogic.h"
 
 @implementation UIResultFilterView
 
@@ -155,6 +156,13 @@
     cell.costumeResultInfo = [_costumeResults objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIResultFilterCollectionViewCell *cell = (UIResultFilterCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
+    [[viewLogic sharedInstance] presentCostumeInfoViewController:cell.costumeResultInfo];
 }
 
 /* End UICollectionView Delegates */

@@ -52,9 +52,46 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)presentActionSheetForCamera
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NLS(@"Add cloth from...") delegate:self cancelButtonTitle:NLS(@"Cancel") destructiveButtonTitle:nil otherButtonTitles:NLS(@"Camera"), NLS(@"Photo Library"), nil];
+    
+    [actionSheet showInView:self.view];
+}
+
 - (void)openCamera
 {
     [[viewLogic sharedInstance] presentCameraViewController];
+}
+
+- (void)openLibrary
+{
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypePhotoLibrary] == NO))
+        return ;
+    
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+    cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    //cameraUI.delegate = self;
+    // Displays a control that allows the user to choose picture or
+    // movie capture, if both are available:
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        //        cameraUI.mediaTypes =
+        //        [UIImagePickerController availableMediaTypesForSourceType:
+        //         UIImagePickerControllerSourceTypeCamera];
+    }
+    else
+    {
+        cameraUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    }
+    
+    // Hides the controls for moving & scaling pictures, or for
+    // trimming movies. To instead show the controls, use YES.
+    cameraUI.allowsEditing = YES;
+    
+    [self presentModalViewController:cameraUI animated:YES];
 }
 
 - (void)openDresser
@@ -79,7 +116,8 @@
     switch (optionType)
     {
         case cameraMainOptionType:
-            [self openCamera];
+            [self presentActionSheetForCamera];
+            //[self openCamera];
             break;
         case dresserMainOptionType:
             [self openDresser];
@@ -95,4 +133,25 @@
     }
 }
 
+/* UIActionSheet Delegates */
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.cancelButtonIndex)
+    {
+        return;
+    }
+    
+    if (buttonIndex == 0)
+    {
+        [self openCamera];
+        return;
+    }
+    else
+    {
+        [self openLibrary];
+    }
+}
+
+/* End UIActionSheet Delegates */
 @end

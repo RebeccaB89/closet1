@@ -10,6 +10,7 @@
 #import "viewLogic.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "ConnectionManager.h"
+#import "WeatherLogic.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,7 @@
     [[viewLogic sharedInstance] applicationLaunched];
     
     [ConnectionManager sharedInstance];
+    [WeatherLogic sharedInstance];
     
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];

@@ -11,6 +11,8 @@
 #import "FacebookManager.h"
 #import "ConnectionManager.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "UIWeatherView.h"
+#import "WeatherLogic.h"
 
 @interface UICameraViewController ()
 {
@@ -25,23 +27,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weatherChanged:) name:WEATHER_CHANGED_EVENT object:nil];
+
     self.title = NLS(@"Camera");
     
     [_cameraButton setTitle:NLS(@"Camera") forState:UIControlStateNormal];
     [_libraryButton setTitle:NLS(@"Library") forState:UIControlStateNormal];
     [_addButton setTitle:NLS(@"Add cloth to dresser") forState:UIControlStateNormal];
     
-    _sharedFBbutton = [[FBSDKShareButton alloc] init];
-    _sharedFBbutton.center = self.view.center;
-    _sharedFBbutton.bottom = self.view.bottom - 10;
-    [self.view addSubview:_sharedFBbutton];
-
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+   
+    _weatherView = [UIWeatherView loadFromNib];
+    _weatherView.frame = _weatherPlaceholder.bounds;
+    _weatherView.autoresizingMask = CELL_FULL_AUTORESIZINGMASK;
+    _weatherView.weatherInfo = [[WeatherLogic sharedInstance] currentWeather];
+    [_weatherPlaceholder addSubview:_weatherView];
 }
 
 - (BOOL)startCameraController
@@ -151,7 +151,6 @@
 
         _currentClothToSharedInfo.imageName = fileName;
         _currentClothToSharedInfo.imagePath = path;
-        
     };
     
     ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
@@ -175,5 +174,14 @@
     
     [self.navigationController pushViewController:newClothVC animated:YES];
 }
+
+/* Notifications */
+
+- (void)weatherChanged:(NSNotification *)info
+{
+    _weatherView.weatherInfo = [[WeatherLogic sharedInstance] currentWeather];
+}
+
+/* End */
 
 @end

@@ -20,6 +20,25 @@
     return @"Cloth";
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder])
+    {
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];    
+}
+
+- (BOOL)canMultipleSelection
+{
+    return YES;
+}
+
 - (UIColor *)color
 {
     return nil;
@@ -33,6 +52,28 @@
 - (UIImage *)image
 {
     return nil;
+}
+
+- (NSInteger)numOfTypeForThisCloth
+{
+    return 0;
+}
+
++ (NSString *)questionChooser
+{
+    return @"cloth?";
+}
+
+- (BOOL)isEqual:(id)object
+{
+    if ([object isKindOfClass:[self class]])
+    {
+        ClothType *another = (ClothType *)object;
+        
+        return [self.strType isEqualToString:another.strType];
+    }
+    
+    return NO;
 }
 
 @end

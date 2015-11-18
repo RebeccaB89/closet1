@@ -13,5 +13,8 @@
     __weak IBOutlet UIImageView *_imageView;
     
     __weak IBOutlet UIView *_fcbkPlaceHolder;
+    
+    __weak IBOutlet UILabel *_titleLabel;
+    
 }
 @end

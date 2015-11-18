@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UIMainViewController.h"
+#import "Cloth.h"
+#import "CostumeResultsInfo.h"
 
 @interface viewLogic : NSObject
 {
@@ -23,5 +25,7 @@
 - (void)presentDresserViewController;
 - (void)presentCostumeViewController;
 - (void)presentSettingsViewController;
+- (void)presentNewClothWithClothInfo:(Cloth *)cloth;
+- (void)presentCostumeInfoViewController:(CostumeResultsInfo *)costumeResultInfo;
 
 @end

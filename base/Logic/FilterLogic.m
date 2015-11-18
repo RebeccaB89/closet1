@@ -7,6 +7,7 @@
 //
 
 #import "FilterLogic.h"
+#import "LocationLogic.h"
 
 @implementation FilterLogic
 

@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) Cloth *upClothInfo;
 @property (nonatomic, strong) Cloth *bottomClothInfo;
+@property (nonatomic, strong) Cloth *accessoryInfo;
 
 @end

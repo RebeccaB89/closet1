@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
     settingsMainOptionType
 } MainOptionType;
 
-@interface UIMainViewController : UIViewController
+@interface UIMainViewController : UIViewController <UIActionSheetDelegate>
 {
     __weak IBOutlet UIButton *_cameraButton;
     

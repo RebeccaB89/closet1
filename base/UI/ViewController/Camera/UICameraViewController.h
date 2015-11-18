@@ -7,15 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIWeatherView.h"
 
 @interface UICameraViewController : UIViewController <UIImagePickerControllerDelegate>
 {
+    
+    __weak IBOutlet UIView *_weatherPlaceholder;
+    
     __weak IBOutlet UIButton *_cameraButton;
     
     __weak IBOutlet UIButton *_libraryButton;
     __weak IBOutlet UIImageView *_photoImageView;
     
     __weak IBOutlet UIButton *_addButton;
+    
+    UIWeatherView *_weatherView;
 }
 
 - (IBAction)cameraClicked:(UIButton *)sender;

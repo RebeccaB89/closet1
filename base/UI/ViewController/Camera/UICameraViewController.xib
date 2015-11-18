@@ -11,6 +11,7 @@
                 <outlet property="_cameraButton" destination="hj4-GY-Jd1" id="Ic3-1n-UoG"/>
                 <outlet property="_libraryButton" destination="94y-mE-ETi" id="6DM-iO-ofC"/>
                 <outlet property="_photoImageView" destination="Cbi-Jo-L3b" id="IdD-oG-odb"/>
+                <outlet property="_weatherPlaceholder" destination="hdu-sC-ZfX" id="Qc6-c4-3CO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94y-mE-ETi" userLabel="Library Button">
-                    <rect key="frame" x="44" y="315" width="233" height="123"/>
+                    <rect key="frame" x="44" y="392" width="233" height="46"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -29,7 +30,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj4-GY-Jd1" userLabel="Camera Button">
-                    <rect key="frame" x="94" y="93" width="132" height="86"/>
+                    <rect key="frame" x="188" y="162" width="132" height="41"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -38,7 +39,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbi-Jo-L3b">
-                    <rect key="frame" x="44" y="165" width="241" height="157"/>
+                    <rect key="frame" x="44" y="227" width="241" height="157"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6C-FB-hf9" userLabel="Add Button">
                     <rect key="frame" x="52" y="471" width="225" height="58"/>
@@ -49,8 +50,13 @@
                         <action selector="addClicked:" destination="-1" eventType="touchUpInside" id="XIK-Fq-pvB"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-sC-ZfX" userLabel="Weather PlaceHOlder">
+                    <rect key="frame" x="8" y="69" width="150" height="150"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="247" y="469"/>
         </view>
     </objects>

@@ -28,6 +28,23 @@
     return @"Event";
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder])
+    {
+        self.eventType = [aDecoder decodeIntForKey:@"eventType"];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeInt:_eventType forKey:@"eventType"];
+}
+
 - (UIColor *)color
 {
     switch (self.eventType)

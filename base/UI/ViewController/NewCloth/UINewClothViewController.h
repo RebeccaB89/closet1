@@ -7,11 +7,16 @@
 //
 
 #import "Cloth.h"
+#import "UICategoryChooserView.h"
+#import "UICategoriesChooserScrollView.h"
 
-@interface UINewClothViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface UINewClothViewController : UIViewController
 {
     __weak IBOutlet UIImageView *_imageView;
-    __weak IBOutlet UITableView *_tableView;
+
+    __weak IBOutlet UIView *_categoryPlaceholder;
+    
+    UICategoriesChooserScrollView *_categoryChooserScrollView;
 }
 
 @property (nonatomic, strong) Cloth *clothInfo;

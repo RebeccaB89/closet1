@@ -43,6 +43,23 @@
     return NLS(@"Accessory");
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder])
+    {
+        self.itemType = [aDecoder decodeIntForKey:@"itemType"];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeInt:_itemType forKey:@"itemType"];
+}
+
 - (UIColor *)color
 {
     switch (self.itemType)
@@ -64,6 +81,11 @@
     }
 }
 
+- (BOOL)canMultipleSelection
+{
+    return NO;
+}
+
 - (NSString *)strType
 {
     switch (self.itemType)
@@ -83,6 +105,11 @@
         default:
             return @"";
     }
+}
+
++ (NSString *)questionChooser
+{
+    return @"item cloth?";
 }
 
 - (BOOL)isUPItem

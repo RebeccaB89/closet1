@@ -25,6 +25,8 @@
     loginButton.center = CGPointMake(_fcbkPlaceHolder.frame.size.width  / 2,
                                      _fcbkPlaceHolder.frame.size.height / 2);
     [_fcbkPlaceHolder addSubview:loginButton];
+    
+    _titleLabel.text = NLS(@"Save and Organize outfit ideas for your wardrobe!");
 }
 
 @end

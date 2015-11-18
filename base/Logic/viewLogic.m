@@ -13,6 +13,9 @@
 #import "UILoginViewController.h"
 #import "UISettingsViewController.h"
 
+#import "UINewClothViewController.h"
+#import "UICostumeInfoViewController.h"
+
 #import "FilterLogic.h"
 #import "UserInfoLogic.h"
 #import "FacebookManager.h"
@@ -92,6 +95,25 @@ static viewLogic *sharedInstance = nil;
     UILoginViewController *loginViewController = [UILoginViewController loadFromNib];
     
     [self presentViewController:loginViewController animated:NO onWindow:YES completion:nil];
+}
+
+- (void)presentNewClothWithClothInfo:(Cloth *)cloth
+{
+    UINewClothViewController *newClothVC = [UINewClothViewController loadFromNib];
+    
+    newClothVC.clothInfo = cloth;
+    
+    [[self currentViewController].navigationController pushViewController:newClothVC animated:YES];
+    //[self.navigationController pushViewController:newClothVC animated:YES];
+}
+
+- (void)presentCostumeInfoViewController:(CostumeResultsInfo *)costumeResultInfo
+{
+    UICostumeInfoViewController *costumeInfoVC = [UICostumeInfoViewController loadFromNib];
+    
+    costumeInfoVC.costumeResultInfo = costumeResultInfo;
+    
+    [[self currentViewController].navigationController pushViewController:costumeInfoVC animated:YES];
 }
 
 - (void)presentMainViewController
