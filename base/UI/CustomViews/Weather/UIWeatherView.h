@@ -14,6 +14,10 @@
     __weak IBOutlet UIImageView *_imageVIew;
     
     __weak IBOutlet UILabel *_infoLbel;
+    
+    __weak IBOutlet UILabel *_todayInfo;
+    
+    __weak IBOutlet UILabel *_tomorrowInfo;
 }
 
 @property (nonatomic, strong) Weather *weatherInfo;

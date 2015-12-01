@@ -50,7 +50,6 @@ static InfoLogic *sharedInstance = nil;
     [aCoder encodeObject:_teeShirts forKey:@"teeShirts"];
     [aCoder encodeObject:_accessory forKey:@"accessory"];
     [aCoder encodeObject:_favorites forKey:@"favorites"];
-
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -71,6 +70,21 @@ static InfoLogic *sharedInstance = nil;
 
 - (void)initialize:(NSCoder *)aDecoder
 {
+    
+//    NSString *fileName = @"currentImage";
+//    if (!fileName)
+//    {
+//        fileName = @"currentImage";
+//    }
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+//                                                         NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    
+//    NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Added"];
+//    NSString* path = [sourcePath stringByAppendingPathComponent:
+//                      fileName];
+//    NSLog(@"%@",  path);
+
     if (!_pants)
     {
         _pants = [NSMutableArray array];
@@ -111,8 +125,10 @@ static InfoLogic *sharedInstance = nil;
     {
         cloth.delegate = self;
     }
-    [self save];
     
+    //[self performSelectorInBackground:@selector(saveOnThread) withObject:nil];
+//    [self save];
+//    
     [self updateFilterCloths];
 }
 
@@ -304,13 +320,13 @@ static InfoLogic *sharedInstance = nil;
 
         [self addToArray:_accessory cloth:accessory2];
         
-        Cloth *accessory3 = [Cloth clothWithImagePath:@"accessory3"
-                                          withSeasons:[NSArray arrayWithObjects:[SeasonClothTypeInfo seasonWithType:springSeasonClothType],[SeasonClothTypeInfo seasonWithType:summerSeasonClothType], [SeasonClothTypeInfo seasonWithType:fallSeasonClothType],[SeasonClothTypeInfo seasonWithType:winterSeasonClothType], nil]
-                                           withEvents:[NSArray arrayWithObjects:  [EventClothTypeInfo eventWithType:interviewEventClothType], [EventClothTypeInfo eventWithType:workEventClothType], [EventClothTypeInfo eventWithType:dateEventClothType], nil]
-                                           withColors:[NSArray arrayWithObjects: [ColorClothTypeInfo colorWithType:redColorClothType], nil] withItemInfo:[ItemClothTypeInfo itemClothWithType:accessoryItemClothType]];
-        accessory3.delegate = self;
-
-        [self addToArray:_accessory cloth:accessory3];
+//        Cloth *accessory3 = [Cloth clothWithImagePath:@"accessory3"
+//                                          withSeasons:[NSArray arrayWithObjects:[SeasonClothTypeInfo seasonWithType:springSeasonClothType],[SeasonClothTypeInfo seasonWithType:summerSeasonClothType], [SeasonClothTypeInfo seasonWithType:fallSeasonClothType],[SeasonClothTypeInfo seasonWithType:winterSeasonClothType], nil]
+//                                           withEvents:[NSArray arrayWithObjects:  [EventClothTypeInfo eventWithType:interviewEventClothType], [EventClothTypeInfo eventWithType:workEventClothType], [EventClothTypeInfo eventWithType:dateEventClothType], nil]
+//                                           withColors:[NSArray arrayWithObjects: [ColorClothTypeInfo colorWithType:redColorClothType], nil] withItemInfo:[ItemClothTypeInfo itemClothWithType:accessoryItemClothType]];
+//        accessory3.delegate = self;
+//
+//        [self addToArray:_accessory cloth:accessory3];
         
         Cloth *accessory4 = [Cloth clothWithImagePath:@"accessory4"
                                           withSeasons:[NSArray arrayWithObjects:[SeasonClothTypeInfo seasonWithType:springSeasonClothType],[SeasonClothTypeInfo seasonWithType:summerSeasonClothType], [SeasonClothTypeInfo seasonWithType:fallSeasonClothType],[SeasonClothTypeInfo seasonWithType:winterSeasonClothType], nil]
@@ -328,6 +344,85 @@ static InfoLogic *sharedInstance = nil;
 
         [self addToArray:_accessory cloth:accessory5];
     }
+}
+
+- (void)addCloth:(Cloth *)clothInfo
+{
+//    NSString *fileName = clothInfo.imageName;
+//    if (!fileName)
+//    {
+//        fileName = @"currentImage";
+//    }
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+//                                                         NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    
+//    NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Added"];
+//    NSString* path = [sourcePath stringByAppendingPathComponent:
+//                      fileName];
+//
+//    UIImage *image = [UIImage imageWithContentsOfFile:clothInfo.imagePath];
+////    if (image)
+////    {
+////        NSData *data = UIImagePNGRepresentation(image);
+////        [data writeToFile:path atomically:YES];
+////    }
+//    
+//    clothInfo.imagePath = path;
+//    clothInfo.imageName = fileName;
+//    clothInfo.image = image;
+    
+    NSMutableArray *clothsToAdd = nil;
+    switch (clothInfo.itemTypeInfo.itemType)
+    {
+        case pantItemClothType:
+        {
+            clothsToAdd = _pants;
+            break;
+        }
+        case skirtItemClothType:
+        {
+            clothsToAdd = _skirts;
+            break;
+        }
+        case teeShirtItemClothType:
+        {
+            clothsToAdd = _teeShirts;
+            break;
+        }
+        case accessoryItemClothType:
+        {
+            clothsToAdd = _accessory;
+            break;
+        }
+        default:
+            break;
+    }
+    
+    if (![clothsToAdd containsObject:clothInfo])
+    {
+        clothInfo.delegate = self;
+        [clothsToAdd addObject:clothInfo];
+    }
+    
+   // [self performSelectorInBackground:@selector(saveOnThread) withObject:self];
+    [self updateFilterCloths];
+
+}
+
+- (void)saveOnThread
+{
+    @synchronized(self)
+    {
+        [self save];
+    
+        [self updateFilterCloths];
+    }
+}
+
+- (void)removeCloth:(Cloth *)clothInfo
+{
+    
 }
 
 - (void)addToArray:(NSMutableArray *)clothArray cloth:(Cloth *)cloth
@@ -421,92 +516,30 @@ static InfoLogic *sharedInstance = nil;
     if (![_favorites containsObject:costume])
     {
         [_favorites addObject:costume];
+        [self save];
     }
 }
 
-- (NSArray *)clothsForClothTypeFilters:(NSArray *)filters
+- (void)removeCostumeResultFromFavorite:(CostumeResultsInfo *)costume
 {
-    NSMutableArray *result = [NSMutableArray array];
+    if ([_favorites containsObject:costume])
+    {
+        [_favorites removeObject:costume];
+        [self save];
+    }
+}
 
-    if (filters.count == 0)
-    {
-        return result;
-    }
-    
-    NSMutableArray *clothToRemove = [NSMutableArray array];
-    NSMutableArray *clothToAdd = [NSMutableArray array];
-
-    NSArray *filterColor = filters;
-    
-    __block NSInteger foundIndex = NSNotFound;
-    [filters enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        if ([obj isKindOfClass:[ColorClothTypeInfo class]])
-        {
-            foundIndex = idx;
-            // stop the enumeration
-            *stop = YES;
-        }
-    }];
-    
-    if (foundIndex == NSNotFound)
-    {
-        filterColor = [[FilterLogic sharedInstance] allItemsForClothType:[ColorClothTypeInfo class]];
-    }
-    
-    for (ClothType *clothType in filterColor)
-    {
-        if ([clothType isKindOfClass:[ColorClothTypeInfo class]])
-        {
-            NSMutableArray *clothForKeyClothType = [_filterCloths objectForKey:clothType.strType];
-            if (clothForKeyClothType)
-            {
-                [result addObjectsFromArray:clothForKeyClothType];
-            }
-        }
-    }
-    
-    for (ClothType *clothType in filters)
-    {
-        if ([clothType isKindOfClass:[ColorClothTypeInfo class]])
-        {
-            continue;
-        }
-        
-        NSMutableArray *clothForKeyClothType = [_filterCloths objectForKey:clothType.strType];
-        
-        for (Cloth *cloth in result)
-        {
-            if (![clothForKeyClothType containsObject:cloth])
-            {
-                [clothToRemove addObject:cloth];
-            }
-        }
-        
-//        if (clothForKeyClothType)
-//        {
-//            [result addObjectsFromArray:clothForKeyClothType];
-//        }
-//        
-//        for (Cloth *cloth in result)
-//        {
-//            if ([clothForKeyClothType containsObject:cloth])
-//            {
-//                [clothToRemove addObject:cloth];
-//            }
-//        }
-    }
-        
-    [result removeObjectsInArray:clothToRemove];
-    [result addObjectsFromArray:clothToAdd];
-
-    return result;
+- (void)appWillClose
+{
+    [self saveOnThread];
 }
 
 /* Cloth Delegates */
 
 - (void)clothDidChangedCategories:(Cloth *)cloth
 {
-    [self save];
+   // [self performSelectorInBackground:@selector(saveOnThread) withObject:nil];
+//    [self save];
     [self updateFilterCloths];
 }
 
@@ -555,8 +588,9 @@ static InfoLogic *sharedInstance = nil;
             break;
     }
     
-    [self save];
+   // [self performSelectorInBackground:@selector(saveOnThread) withObject:nil];
     [self updateFilterCloths];
+
     [Shared postNotification:INFOS_DATA_CHANGED];
 }
 

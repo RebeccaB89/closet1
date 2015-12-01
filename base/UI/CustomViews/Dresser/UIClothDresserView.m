@@ -18,14 +18,7 @@
 
 - (void)layoutData
 {
-    if (_clothInfo)
-    {
-        _imageView.image = IMAGE(_clothInfo.imagePath);
-    }
-    else
-    {
-        _imageView.image = nil;
-    }
+    _imageView.image = _clothInfo.image;
 }
 
 @end

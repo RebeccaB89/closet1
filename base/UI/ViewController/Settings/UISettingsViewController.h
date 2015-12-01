@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIWeatherView.h"
 
 @interface UISettingsViewController : UIViewController
 {
     __weak IBOutlet UIView *_fcbkPlaceholder;
+    
+    __weak IBOutlet UIView *_weatherPlaceholder;
+    
+    __weak IBOutlet UIButton *_filterDateButton;
+    
+    UIWeatherView *_weatherView;
 }
+
+- (IBAction)filterDateClicked:(UIButton *)sender;
+
 
 @end

@@ -12,6 +12,7 @@
 #import "UIHeaderClothDresserView.h"
 #import "UINewClothViewController.h"
 #import "viewLogic.h"
+#import "UIResultFilterCollectionViewCell.h"
 
 @interface UIDresserViewController ()
 
@@ -27,11 +28,21 @@
     
     [_clothsCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"clothCell"];
     [_clothsCollectionView registerNib:[UINib nibWithNibName:@"UIHeaderClothDresserView" bundle:nil]  forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UIHeaderClothDresserView"];
+    [_clothsCollectionView registerNib:[UINib nibWithNibName:@"UIResultFilterCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"UIResultFilterCollectionViewCell"];
+
 
     _clothsCollectionView.delegate = self;
     _clothsCollectionView.dataSource = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(infoDataChanged) name:INFOS_DATA_CHANGED object:nil];
+    
+    [self reloadData];
+    [self layoutData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     [self reloadData];
     [self layoutData];
@@ -47,6 +58,7 @@
 {
     _cloths = [[InfoLogic sharedInstance] cloths];
     _sections = [_cloths allKeys];
+    _favorites = [[InfoLogic sharedInstance] favorites];
 }
 
 - (void)layoutData
@@ -63,11 +75,23 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
+    if (_favorites)
+    {
+        return [_sections count] + 1;
+    }
     return [_sections count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;
 {
+    if (_favorites)
+    {
+        if (section == [_sections count])
+        {
+            return _favorites.count;
+        }
+    }
+    
     NSString *sectionKey = [_sections objectAtIndex:section];
     NSArray *clothForSection = [_cloths objectForKey:sectionKey];
     return [clothForSection count];
@@ -79,6 +103,18 @@
 
     if (kind == UICollectionElementKindSectionHeader)
     {
+        if (_favorites)
+        {
+            if (indexPath.section == [_sections count])
+            {
+                UIHeaderClothDresserView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UIHeaderClothDresserView" forIndexPath:indexPath];
+                
+                headerView.titleLabel.text = @"favorites";
+                reusableview = headerView;
+                return reusableview;
+            }
+        }
+        
         UIHeaderClothDresserView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"UIHeaderClothDresserView" forIndexPath:indexPath];
         NSString *sectionKey = [_sections objectAtIndex:indexPath.section];
 
@@ -92,6 +128,21 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_favorites)
+    {
+        if (indexPath.section == [_sections count])
+        {
+            UIResultFilterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UIResultFilterCollectionViewCell" forIndexPath:indexPath];
+            if (!cell)
+            {
+                cell = [[UIResultFilterCollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+            }
+            
+            cell.costumeResultInfo = [_favorites objectAtIndex:indexPath.row];
+            return cell;
+        }
+    }
+    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"clothCell" forIndexPath:indexPath];
     UIClothDresserView *clothDresserView = (UIClothDresserView *)[cell viewWithTag:2653];
     if (!cell)
@@ -116,6 +167,17 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_favorites)
+    {
+        if (indexPath.section == [_sections count])
+        {
+            UIResultFilterCollectionViewCell *cell = (UIResultFilterCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+            
+            [[viewLogic sharedInstance] presentCostumeInfoViewController:cell.costumeResultInfo];
+            return;
+        }
+    }
+    
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     UIClothDresserView *clothDresserView = (UIClothDresserView *)[cell viewWithTag:2653];
 

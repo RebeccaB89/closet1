@@ -8,7 +8,7 @@
 
 #import "LocationLogic.h"
 
-#define SIMULATE_LOCATION 1
+#define SIMULATE_LOCATION 0
 #define DIRECTIONS_LOGIC_LAST_LOCATION_KEY      @"lastLocation"
 
 

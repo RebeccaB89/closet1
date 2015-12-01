@@ -19,11 +19,15 @@
         
         NSString *info = [NSString stringWithFormat:@"%@ - %0.f C", self.weatherInfo.place, self.weatherInfo.cDegrees];
         _infoLbel.text = info;
+        _todayInfo.text = [NSString stringWithFormat:@"Today :\n%@", self.weatherInfo.todayInfo];
+        _tomorrowInfo.text = [NSString stringWithFormat:@"Tomorrow :\n%@", self.weatherInfo.tomorrowInfo];
     }
     else
     {
         [_imageVIew sd_cancelCurrentImageLoad];
         _infoLbel.text = nil;
+        _todayInfo.text = nil;
+        _tomorrowInfo.text = nil;
     }
 }
 

@@ -74,6 +74,7 @@
 		B314DA4B1B57DCD400BA53CA /* UINewClothViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B314DA491B57DCD400BA53CA /* UINewClothViewController.xib */; };
 		B33137151BF38FBB006C22BB /* UICategoryChooserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B33137131BF38FBB006C22BB /* UICategoryChooserTableViewCell.m */; };
 		B33137161BF38FBB006C22BB /* UICategoryChooserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B33137141BF38FBB006C22BB /* UICategoryChooserTableViewCell.xib */; };
+		B34E4F3D1C0DCD1E00A85B92 /* NSDate-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = B34E4F3C1C0DCD1E00A85B92 /* NSDate-Expanded.m */; };
 		B350402E1BD4E310004A58DC /* UILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B350402C1BD4E310004A58DC /* UILoginViewController.m */; };
 		B350402F1BD4E310004A58DC /* UILoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B350402D1BD4E310004A58DC /* UILoginViewController.xib */; };
 		B35040321BD4E555004A58DC /* UserInfoLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = B35040311BD4E555004A58DC /* UserInfoLogic.m */; };
@@ -90,10 +91,12 @@
 		B35338E41B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338E21B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.m */; };
 		B35338E51B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35338E31B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib */; };
 		B35338E81B538F8900B2BE3E /* CostumeResultsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B35338E71B538F8900B2BE3E /* CostumeResultsInfo.m */; };
+		B3579D1D1C0B441200BCE551 /* Added in Resources */ = {isa = PBXBuildFile; fileRef = B3579D1C1C0B441200BCE551 /* Added */; };
 		B35BC70E1BF3928A006DDC72 /* UICategoryChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35BC70D1BF3928A006DDC72 /* UICategoryChooserView.m */; };
 		B35BC7101BF39293006DDC72 /* UICategoryChooserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35BC70F1BF39293006DDC72 /* UICategoryChooserView.xib */; };
 		B35BC7131BF462D3006DDC72 /* UICategoriesChooserScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B35BC7121BF462D3006DDC72 /* UICategoriesChooserScrollView.m */; };
 		B35BC7151BF462DC006DDC72 /* UICategoriesChooserScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35BC7141BF462DC006DDC72 /* UICategoriesChooserScrollView.xib */; };
+		B380DFB51C08760000F2FF21 /* NSDate+Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = B380DFB41C08760000F2FF21 /* NSDate+Weather.m */; };
 		B3830EBF1BF607BF00E45033 /* BaseSerializeData.m in Sources */ = {isa = PBXBuildFile; fileRef = B3830EBE1BF607BF00E45033 /* BaseSerializeData.m */; };
 		B3830EC61BF615AC00E45033 /* accessory1.png in Resources */ = {isa = PBXBuildFile; fileRef = B3830EC11BF615AC00E45033 /* accessory1.png */; };
 		B3830EC71BF615AC00E45033 /* accessory2.png in Resources */ = {isa = PBXBuildFile; fileRef = B3830EC21BF615AC00E45033 /* accessory2.png */; };
@@ -258,6 +261,8 @@
 		B33137121BF38FBB006C22BB /* UICategoryChooserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICategoryChooserTableViewCell.h; sourceTree = "<group>"; };
 		B33137131BF38FBB006C22BB /* UICategoryChooserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICategoryChooserTableViewCell.m; sourceTree = "<group>"; };
 		B33137141BF38FBB006C22BB /* UICategoryChooserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICategoryChooserTableViewCell.xib; sourceTree = "<group>"; };
+		B34E4F3B1C0DCD1E00A85B92 /* NSDate-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Expanded.h"; sourceTree = "<group>"; };
+		B34E4F3C1C0DCD1E00A85B92 /* NSDate-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Expanded.m"; sourceTree = "<group>"; };
 		B350402B1BD4E310004A58DC /* UILoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILoginViewController.h; sourceTree = "<group>"; };
 		B350402C1BD4E310004A58DC /* UILoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILoginViewController.m; sourceTree = "<group>"; };
 		B350402D1BD4E310004A58DC /* UILoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UILoginViewController.xib; sourceTree = "<group>"; };
@@ -283,12 +288,15 @@
 		B35338E31B52ED6700B2BE3E /* UIResultFilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIResultFilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		B35338E61B538F8900B2BE3E /* CostumeResultsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostumeResultsInfo.h; sourceTree = "<group>"; };
 		B35338E71B538F8900B2BE3E /* CostumeResultsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostumeResultsInfo.m; sourceTree = "<group>"; };
+		B3579D1C1C0B441200BCE551 /* Added */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Added; path = Cloths/Added; sourceTree = "<group>"; };
 		B35BC70C1BF3928A006DDC72 /* UICategoryChooserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICategoryChooserView.h; sourceTree = "<group>"; };
 		B35BC70D1BF3928A006DDC72 /* UICategoryChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICategoryChooserView.m; sourceTree = "<group>"; };
 		B35BC70F1BF39293006DDC72 /* UICategoryChooserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICategoryChooserView.xib; sourceTree = "<group>"; };
 		B35BC7111BF462D3006DDC72 /* UICategoriesChooserScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICategoriesChooserScrollView.h; sourceTree = "<group>"; };
 		B35BC7121BF462D3006DDC72 /* UICategoriesChooserScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICategoriesChooserScrollView.m; sourceTree = "<group>"; };
 		B35BC7141BF462DC006DDC72 /* UICategoriesChooserScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICategoriesChooserScrollView.xib; sourceTree = "<group>"; };
+		B380DFB31C08760000F2FF21 /* NSDate+Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Weather.h"; sourceTree = "<group>"; };
+		B380DFB41C08760000F2FF21 /* NSDate+Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Weather.m"; sourceTree = "<group>"; };
 		B3830EBD1BF607BF00E45033 /* BaseSerializeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseSerializeData.h; sourceTree = "<group>"; };
 		B3830EBE1BF607BF00E45033 /* BaseSerializeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseSerializeData.m; sourceTree = "<group>"; };
 		B3830EC11BF615AC00E45033 /* accessory1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accessory1.png; sourceTree = "<group>"; };
@@ -442,6 +450,7 @@
 		480C7CB61B36D49700D4E585 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3579D1C1C0B441200BCE551 /* Added */,
 				B3BEAFCB1BFA701100E6CBA9 /* favoriteDisabled.png */,
 				B3BEAFC91BFA6F3800E6CBA9 /* favorite.png */,
 				B3FBF1751BF1256C006DBAA8 /* BG */,
@@ -672,6 +681,8 @@
 		4889751D1B00942D00E63E90 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				B34E4F3B1C0DCD1E00A85B92 /* NSDate-Expanded.h */,
+				B34E4F3C1C0DCD1E00A85B92 /* NSDate-Expanded.m */,
 				B3AB74D71BD7806800257E3A /* NSString-URLArguments.h */,
 				B3AB74D81BD7806800257E3A /* NSString-URLArguments.m */,
 				486988191B022ACF0081A0F9 /* NSObject-Utility.h */,
@@ -682,6 +693,8 @@
 				488975211B00944A00E63E90 /* UIView-Nib.m */,
 				488975221B00944A00E63E90 /* UIViewController-Nib.h */,
 				488975231B00944A00E63E90 /* UIViewController-Nib.m */,
+				B380DFB31C08760000F2FF21 /* NSDate+Weather.h */,
+				B380DFB41C08760000F2FF21 /* NSDate+Weather.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -699,9 +712,9 @@
 				48BB71E81B329BD300641F76 /* ClothTypeHelper.m */,
 				480C7C8D1B332F1500D4E585 /* ClothType.h */,
 				480C7C8E1B332F1500D4E585 /* ClothType.m */,
+				480C7C931B3330A800D4E585 /* ColorClothTypeInfo.h */,
 				480C7C901B332FB200D4E585 /* ItemClothTypeInfo.h */,
 				480C7C911B332FB200D4E585 /* ItemClothTypeInfo.m */,
-				480C7C931B3330A800D4E585 /* ColorClothTypeInfo.h */,
 				480C7C941B3330A800D4E585 /* ColorClothTypeInfo.m */,
 				480C7C961B33318900D4E585 /* EventClothTypeInfo.h */,
 				480C7C971B33318900D4E585 /* EventClothTypeInfo.m */,
@@ -795,10 +808,10 @@
 		B35338CB1B52B25600B2BE3E /* Dresser */ = {
 			isa = PBXGroup;
 			children = (
-				B35338D61B52B71300B2BE3E /* UIHeaderClothDresserView.h */,
 				B35338CC1B52B28F00B2BE3E /* UIClothDresserView.h */,
 				B35338CD1B52B28F00B2BE3E /* UIClothDresserView.m */,
 				B35338CF1B52B29800B2BE3E /* UIClothDresserView.xib */,
+				B35338D61B52B71300B2BE3E /* UIHeaderClothDresserView.h */,
 				B35338D71B52B71300B2BE3E /* UIHeaderClothDresserView.m */,
 				B35338D81B52B71300B2BE3E /* UIHeaderClothDresserView.xib */,
 			);
@@ -1007,6 +1020,7 @@
 				TargetAttributes = {
 					488974EE1B00928300E63E90 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = N7M2C6TNEQ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -1052,6 +1066,7 @@
 				4846DA6E1B456516006C62DC /* pant3.png in Resources */,
 				B35BC7151BF462DC006DDC72 /* UICategoriesChooserScrollView.xib in Resources */,
 				4846DA861B45652A006C62DC /* teeShirt7.png in Resources */,
+				B3579D1D1C0B441200BCE551 /* Added in Resources */,
 				B39C74351B55044E0017D91A /* skirt6.png in Resources */,
 				4846DA831B45652A006C62DC /* teeShirt4.png in Resources */,
 				48D222B31B315458006C2B35 /* UIMainViewController.xib in Resources */,
@@ -1115,6 +1130,7 @@
 				B33137151BF38FBB006C22BB /* UICategoryChooserTableViewCell.m in Sources */,
 				B3AE936A1B8CC2DE00190576 /* SFBasicClient.m in Sources */,
 				480C7C981B33318900D4E585 /* EventClothTypeInfo.m in Sources */,
+				B380DFB51C08760000F2FF21 /* NSDate+Weather.m in Sources */,
 				B3AE93601B8CC2DE00190576 /* AFHTTPClient.m in Sources */,
 				B350403B1BD50F33004A58DC /* UISettingsViewController.m in Sources */,
 				B3AB750D1BD78EBD00257E3A /* UIImage+MultiFormat.m in Sources */,
@@ -1129,6 +1145,7 @@
 				B35040321BD4E555004A58DC /* UserInfoLogic.m in Sources */,
 				480C7CAA1B3687EC00D4E585 /* UIBubbleContactItemView.m in Sources */,
 				B3AE936F1B8CC2DE00190576 /* SFUtils.m in Sources */,
+				B34E4F3D1C0DCD1E00A85B92 /* NSDate-Expanded.m in Sources */,
 				B3AE93681B8CC2DE00190576 /* UIImageView+AFNetworking.m in Sources */,
 				B3AB75051BD78EBD00257E3A /* SDWebImageCompat.m in Sources */,
 				B3AE93691B8CC2DE00190576 /* AFOAuth1Client.m in Sources */,
@@ -1297,7 +1314,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Haggai Elazar (F8339UX648)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/base/3rdParty/Facebook",
@@ -1309,7 +1326,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c06d0601-797c-4db1-b0ac-d9cff9274eb2";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -1322,7 +1339,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Haggai Elazar (F8339UX648)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/base/3rdParty/Facebook",
@@ -1334,7 +1351,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c06d0601-797c-4db1-b0ac-d9cff9274eb2";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

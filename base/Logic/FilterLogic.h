@@ -17,4 +17,9 @@
 - (NSArray *)allClothTypeClass;
 - (NSArray *)allItemsForClothType:(Class)clothTypeclass;
 - (NSDictionary *)clothTypes;
+- (NSArray *)clothsForClothTypeFilters:(NSArray *)filters;
+
+@property (nonatomic, unsafe_unretained) BOOL accordingFilterByMeteo;
+@property (nonatomic, unsafe_unretained) BOOL accordingFilterByColorScheme;
+
 @end

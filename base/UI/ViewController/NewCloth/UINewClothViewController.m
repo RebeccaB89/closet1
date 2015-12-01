@@ -43,7 +43,14 @@
 
 - (void)done
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [[InfoLogic sharedInstance] addCloth:_clothInfo];
+    
+    if (self.popToRoot)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    else
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)reloadData
@@ -60,15 +67,7 @@
 
 - (void)layoutData
 {
-    UIImage *image = IMAGE(_clothInfo.imagePath);
-    if (image)
-    {
-        _imageView.image = image;
-    }
-    else
-    {
-        _imageView.image = [UIImage imageWithContentsOfFile:_clothInfo.imagePath];
-    }
+    _imageView.image = _clothInfo.image;
     
     _categoryChooserScrollView.clothInfo = self.clothInfo;
 }

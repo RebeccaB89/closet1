@@ -61,7 +61,27 @@
 
 - (void)openCamera
 {
-    [[viewLogic sharedInstance] presentCameraViewController];
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeCamera] == NO))
+        return ;
+    
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    // Displays a control that allows the user to choose picture or
+    // movie capture, if both are available:
+    cameraUI.mediaTypes =
+    [UIImagePickerController availableMediaTypesForSourceType:
+     UIImagePickerControllerSourceTypeCamera];
+    cameraUI.delegate = self;
+    
+    // Hides the controls for moving & scaling pictures, or for
+    // trimming movies. To instead show the controls, use YES.
+    cameraUI.allowsEditing = YES;
+    
+    [self presentModalViewController:cameraUI animated:YES];
+
+    //[[viewLogic sharedInstance] presentCameraViewController];
 }
 
 - (void)openLibrary
@@ -72,7 +92,7 @@
     
     UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
     cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    //cameraUI.delegate = self;
+    cameraUI.delegate = self;
     // Displays a control that allows the user to choose picture or
     // movie capture, if both are available:
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
@@ -154,4 +174,20 @@
 }
 
 /* End UIActionSheet Delegates */
+
+/* UIImagePickerController Delegates */
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    NSURL * imageUrl = [info valueForKey:UIImagePickerControllerReferenceURL];
+
+    [[viewLogic sharedInstance] presentCameraViewController:image withUrl:imageUrl];
+}
+
+/* End UIImagePickerController Delegates */
+
 @end

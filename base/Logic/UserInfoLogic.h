@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum : NSUInteger {
+    todayFilterDataType,
+    tomorrowFilterDataType
+} FilterDateType;
+
 @interface UserInfoLogic : NSObject
 
 + (UserInfoLogic *)sharedInstance;
 
 - (BOOL)isLogin;
+
+@property (nonatomic, unsafe_unretained) FilterDateType filterDateType;
 
 @end

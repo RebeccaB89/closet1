@@ -23,9 +23,15 @@
 @property (nonatomic, strong) NSString *imageUrl;
 @property (nonatomic, strong) NSString *place;
 @property (nonatomic, strong) NSString *condition;
+@property (nonatomic, strong) NSString *tomorrowInfo;
+@property (nonatomic, strong) NSString *todayInfo;
+
 @property (nonatomic, unsafe_unretained) float cDegrees;
 @property (nonatomic, unsafe_unretained) float fDegrees;
 @property (nonatomic, unsafe_unretained) float windDirection;
 @property (nonatomic, unsafe_unretained) float windSpeed;
+
+@property (nonatomic, unsafe_unretained) float cDegreesTomorrow;
+@property (nonatomic, unsafe_unretained) float fDegreesTomorrow;
 
 @end

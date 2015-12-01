@@ -8,6 +8,7 @@
 
 #import "UICostumeInfoViewController.h"
 #import "FacebookManager.h"
+#import "infoLogic.h"
 
 @interface UICostumeInfoViewController ()
 {
@@ -26,6 +27,7 @@
     _sharedFBbutton.center =  CGPointMake(_sharePlaceholder.width/2, _sharePlaceholder.height/2);
     [_sharePlaceholder addSubview:_sharedFBbutton];
     
+    _currentClothToSharedInfo = [[ClothToSharedInfo alloc] init];
     [self layoutData];
 }
 
@@ -40,10 +42,10 @@
 
 - (void)layoutData
 {
-    UIImage *upImage = IMAGE(_costumeResultInfo.upClothInfo.imagePath);
-    UIImage *bottomImage = IMAGE(_costumeResultInfo.bottomClothInfo.imagePath);
-    UIImage *accessoryImage = IMAGE(_costumeResultInfo.accessoryInfo.imagePath);
-
+    UIImage *upImage = _costumeResultInfo.upClothInfo.image;
+    UIImage *bottomImage = _costumeResultInfo.bottomClothInfo.image;
+    UIImage *accessoryImage = _costumeResultInfo.accessoryInfo.image;
+    
     _topImageView.image = upImage;
     _bottomImageView.image = bottomImage;
     _accessoryImageView.image = accessoryImage;
@@ -51,6 +53,16 @@
     _currentClothToSharedInfo.image = [self changeViewToImage:_costumeInfoView];
     
     [self updateFacebookButton];
+    
+    NSArray *favorites = [[InfoLogic sharedInstance] favorites];
+    if ([favorites containsObject:self.costumeResultInfo])
+    {
+        _favoriteButton.selected = YES;
+    }
+    else
+    {
+        _favoriteButton.selected = NO;
+    }
 }
 
 - (void)setCostumeResultInfo:(CostumeResultsInfo *)costumeResultInfo
@@ -72,6 +84,19 @@
     
     return img;
     
+}
+
+- (IBAction)favoriteClicked:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    if (sender.selected)
+    {
+        [[InfoLogic sharedInstance] addCostumeResultToFavorite:self.costumeResultInfo];
+    }
+    else
+    {
+        [[InfoLogic sharedInstance] removeCostumeResultFromFavorite:self.costumeResultInfo];
+    }
 }
 
 @end

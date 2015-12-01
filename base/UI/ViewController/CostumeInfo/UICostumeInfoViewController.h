@@ -23,6 +23,8 @@
     __weak IBOutlet UIImageView *_accessoryImageView;
 }
 
+- (IBAction)favoriteClicked:(UIButton *)sender;
+
 @property (nonatomic, strong) CostumeResultsInfo *costumeResultInfo;
 
 

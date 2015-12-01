@@ -93,7 +93,6 @@ static NSString * const kSystemPropertyName = @"hash";
 	return object;
 }
 
-
 #pragma mark -
 #pragma mark Clear
 

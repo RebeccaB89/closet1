@@ -8,6 +8,9 @@
 
 #import "FilterLogic.h"
 #import "LocationLogic.h"
+#import "WeatherLogic.h"
+#import "UserInfoLogic.h"
+#import "NSDate-Expanded.h"
 
 @implementation FilterLogic
 
@@ -31,6 +34,8 @@ static FilterLogic *sharedInstance = nil;
     
     if (self)
     {
+        _accordingFilterByMeteo = YES;
+        _accordingFilterByColorScheme = NO;
     }
     
     return self;
@@ -39,6 +44,128 @@ static FilterLogic *sharedInstance = nil;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (NSArray *)clothsForClothTypeFilters:(NSArray *)filters
+{
+    NSMutableArray *result = [NSMutableArray array];
+    
+    if (filters.count == 0)
+    {
+        return result;
+    }
+    
+    NSMutableArray *clothToRemove = [NSMutableArray array];
+    NSMutableArray *clothToAdd = [NSMutableArray array];
+    
+    NSArray *filterColor = filters;
+    
+    __block NSInteger foundIndex = NSNotFound;
+    [filters enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[ColorClothTypeInfo class]])
+        {
+            foundIndex = idx;
+            // stop the enumeration
+            *stop = YES;
+        }
+    }];
+    
+    if (foundIndex == NSNotFound)
+    {
+        filterColor = [[FilterLogic sharedInstance] allItemsForClothType:[ColorClothTypeInfo class]];
+    }
+    
+    for (ClothType *clothType in filterColor)
+    {
+        if ([clothType isKindOfClass:[ColorClothTypeInfo class]])
+        {
+            NSMutableArray *clothForKeyClothType = [[[InfoLogic sharedInstance] filters] objectForKey:clothType.strType];
+            if (clothForKeyClothType)
+            {
+                [result addObjectsFromArray:clothForKeyClothType];
+            }
+        }
+    }
+    
+    for (ClothType *clothType in filters)
+    {
+        if ([clothType isKindOfClass:[ColorClothTypeInfo class]])
+        {
+            continue;
+        }
+        
+        NSMutableArray *clothForKeyClothType = [[[InfoLogic sharedInstance] filters] objectForKey:clothType.strType];
+        
+        for (Cloth *cloth in result)
+        {
+            if (![clothForKeyClothType containsObject:cloth])
+            {
+                [clothToRemove addObject:cloth];
+            }
+        }
+    }
+    
+    [result removeObjectsInArray:clothToRemove];
+    [result addObjectsFromArray:clothToAdd];
+    
+    result = [self clothsAccordingFilterByMeteo:result];
+    
+    return result;
+}
+
+- (NSMutableArray *)clothsAccordingFilterByMeteo:(NSMutableArray *)cloths
+{
+    if (!self.accordingFilterByMeteo)
+    {
+        return cloths;
+    }
+    
+    Weather *weather = [[WeatherLogic sharedInstance] currentWeather];
+    NSDate *date;// = [NSDate date];
+    CGFloat degree = 0;
+    if ([[UserInfoLogic sharedInstance] filterDateType] == tomorrowFilterDataType)
+    {
+        date = [NSDate addDaysToDate:[NSDate date] days:1];
+        degree = weather.cDegreesTomorrow;
+    }
+    else
+    {
+        date = [NSDate date];
+        degree = weather.cDegrees;
+    }
+    
+    NSMutableArray *clothToRemove = [NSMutableArray array];
+    for (Cloth *cloth in cloths)
+    {
+        BOOL goodCloth = NO;
+        for (SeasonClothTypeInfo *season in cloth.seasonTypeInfos)
+        {
+            if ([season isGoodForDate:date withDegree:degree])
+            {
+                goodCloth = YES;
+                break;
+            }
+        }
+        
+        if (!goodCloth)
+        {
+            [clothToRemove addObject:cloth];
+        }
+    }
+    
+    [cloths removeObjectsInArray:clothToRemove];
+    
+    return cloths;
+}
+
+- (NSArray *)clothsAccordingFilterByColorScheme:(NSArray *)cloths
+{
+    if (!self.accordingFilterByColorScheme)
+    {
+        return cloths;
+    }
+    
+    return cloths;
 }
 
 - (NSDictionary *)clothsFiteredByItemType:(NSArray *)clothsFiltered

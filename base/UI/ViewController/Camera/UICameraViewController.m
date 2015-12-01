@@ -24,6 +24,16 @@
 
 @implementation UICameraViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self)
+    {
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,6 +42,10 @@
 
     self.title = NLS(@"Camera");
     
+    if (!_currentClothToSharedInfo)
+    {
+        _currentClothToSharedInfo = [[ClothToSharedInfo alloc]init];
+    }
     [_cameraButton setTitle:NLS(@"Camera") forState:UIControlStateNormal];
     [_libraryButton setTitle:NLS(@"Library") forState:UIControlStateNormal];
     [_addButton setTitle:NLS(@"Add cloth to dresser") forState:UIControlStateNormal];
@@ -42,6 +56,9 @@
     _weatherView.autoresizingMask = CELL_FULL_AUTORESIZINGMASK;
     _weatherView.weatherInfo = [[WeatherLogic sharedInstance] currentWeather];
     [_weatherPlaceholder addSubview:_weatherView];
+    
+    _photoImageView.image = _image;
+    _currentClothToSharedInfo.image = _image;
 }
 
 - (BOOL)startCameraController
@@ -110,6 +127,45 @@
     }
 }
 
+- (void)setImage:(UIImage *)image
+{
+    _image = image;
+    _photoImageView.image = _image;
+}
+
+- (void)setImageUrl:(NSURL *)imageUrl
+{
+    _imageUrl = imageUrl;
+    
+    // define the block to call when we get the asset based on the url (below)
+    ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *imageAsset)
+    {
+        ALAssetRepresentation *imageRep = [imageAsset defaultRepresentation];
+        NSString *fileName = [imageRep filename];
+        if (!fileName)
+        {
+            fileName = @"currentImage";
+        }
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString* path = [documentsDirectory stringByAppendingPathComponent:
+                          fileName ];
+        NSData* data = UIImagePNGRepresentation(_photoImageView.image);
+        [data writeToFile:path atomically:YES];
+        
+        if (!_currentClothToSharedInfo)
+        {
+            _currentClothToSharedInfo = [[ClothToSharedInfo alloc]init];
+        }
+        _currentClothToSharedInfo.imageName = fileName;
+        _currentClothToSharedInfo.imagePath = path;
+    };
+    
+    ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
+    [assetslibrary assetForURL:_imageUrl resultBlock:resultblock failureBlock:nil];
+}
+
 - (IBAction)cameraClicked:(UIButton *)sender
 {
     [self startCameraController];
@@ -124,13 +180,11 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
     
-    _currentClothToSharedInfo = [[ClothToSharedInfo alloc] init];
-    
     _photoImageView.image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     _currentClothToSharedInfo.image = _photoImageView.image;
     
-    NSURL *refURL = [info valueForKey:UIImagePickerControllerReferenceURL];
+    _imageUrl = [info valueForKey:UIImagePickerControllerReferenceURL];
     
     // define the block to call when we get the asset based on the url (below)
     ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *imageAsset)
@@ -154,7 +208,7 @@
     };
     
     ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
-    [assetslibrary assetForURL:refURL resultBlock:resultblock failureBlock:nil];
+    [assetslibrary assetForURL:_imageUrl resultBlock:resultblock failureBlock:nil];
     
     [self updateFacebookButton];
 }
@@ -171,6 +225,9 @@
     UINewClothViewController *newClothVC = [UINewClothViewController loadFromNib];
     
     newClothVC.clothInfo = [Cloth clothWithImagePath:_currentClothToSharedInfo.imagePath withSeason:[SeasonClothTypeInfo seasonWithType:summerSeasonClothType] withEvent:[EventClothTypeInfo eventWithType:dateEventClothType] withColor:[ColorClothTypeInfo colorWithType:blackColorClothType] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
+    newClothVC.clothInfo.imageName = _currentClothToSharedInfo.imageName;
+    newClothVC.clothInfo.image = _image;
+    newClothVC.popToRoot = YES;
     
     [self.navigationController pushViewController:newClothVC animated:YES];
 }

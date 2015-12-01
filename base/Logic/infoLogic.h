@@ -25,11 +25,15 @@
 }
 
 + (InfoLogic *)sharedInstance;
-
+- (void)appWillClose;
 - (NSDictionary *)cloths;
 - (NSDictionary *)filters;
-- (NSArray *)clothsForClothTypeFilters:(NSArray *)filters;
+
+- (void)addCloth:(Cloth *)clothInfo;
+- (void)removeCloth:(Cloth *)clothInfo;
+
 - (NSArray *)favorites;
 - (void)addCostumeResultToFavorite:(CostumeResultsInfo *)costume;
+- (void)removeCostumeResultFromFavorite:(CostumeResultsInfo *)costume;
 
 @end

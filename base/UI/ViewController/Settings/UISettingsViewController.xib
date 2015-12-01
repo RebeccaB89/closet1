@@ -2,12 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UISettingsViewController">
             <connections>
                 <outlet property="_fcbkPlaceholder" destination="k0B-o0-COF" id="yTO-Le-Du4"/>
+                <outlet property="_filterDateButton" destination="518-UN-ioW" id="sTx-OB-b5b"/>
+                <outlet property="_weatherPlaceholder" destination="jZK-ZL-Kli" id="hJM-Dh-J10"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,23 +19,46 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0B-o0-COF" userLabel="fcbk button placeholder">
-                    <rect key="frame" x="350" y="50" width="200" height="70"/>
+                    <rect key="frame" x="200" y="50" width="200" height="70"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="2mg-XU-SO6"/>
                         <constraint firstAttribute="height" constant="70" id="coT-1J-24W"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZK-ZL-Kli" userLabel="Weather placeholder">
+                    <rect key="frame" x="20" y="130" width="560" height="150"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="w1K-Tr-tSn"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="518-UN-ioW" userLabel="Filter Date Button">
+                    <rect key="frame" x="20" y="290" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="filterDateClicked:" destination="-1" eventType="touchUpInside" id="ebL-w6-icc"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="jZK-ZL-Kli" secondAttribute="trailing" constant="20" id="6ks-4h-6X4"/>
+                <constraint firstItem="518-UN-ioW" firstAttribute="top" secondItem="jZK-ZL-Kli" secondAttribute="bottom" constant="10" id="AxJ-AA-Mp0"/>
+                <constraint firstAttribute="centerX" secondItem="k0B-o0-COF" secondAttribute="centerX" id="FIC-IO-yR7"/>
                 <constraint firstAttribute="centerX" secondItem="k0B-o0-COF" secondAttribute="centerX" id="Fic-i8-IhS"/>
                 <constraint firstItem="k0B-o0-COF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="O58-uH-DKl"/>
+                <constraint firstItem="jZK-ZL-Kli" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="WwI-Cn-5ts"/>
+                <constraint firstItem="jZK-ZL-Kli" firstAttribute="top" secondItem="k0B-o0-COF" secondAttribute="bottom" constant="10" id="YQV-DV-PoJ"/>
                 <constraint firstAttribute="trailing" secondItem="k0B-o0-COF" secondAttribute="trailing" constant="50" id="r0O-7W-Hwc"/>
+                <constraint firstItem="jZK-ZL-Kli" firstAttribute="leading" secondItem="518-UN-ioW" secondAttribute="leading" id="rQu-uL-Lc5"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="Fic-i8-IhS"/>
+                    <exclude reference="r0O-7W-Hwc"/>
                 </mask>
             </variation>
         </view>

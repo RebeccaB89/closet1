@@ -19,6 +19,7 @@ typedef enum : NSUInteger
 @interface SeasonClothTypeInfo : ClothType
 
 + (SeasonClothTypeInfo *)seasonWithType:(SeasonClothType)seasonClothType;
+- (BOOL)isGoodForDate:(NSDate *)date withDegree:(CGFloat)degree;
 @property (nonatomic, unsafe_unretained) SeasonClothType seasonType;
 
 @end

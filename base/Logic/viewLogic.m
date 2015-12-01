@@ -127,10 +127,11 @@ static viewLogic *sharedInstance = nil;
     [self presentViewController:nav animated:NO onWindow:YES completion:nil];
 }
 
-- (void)presentCameraViewController
+- (void)presentCameraViewController:(UIImage *)image withUrl:(NSURL *)imageUrl
 {
     UICameraViewController *cameraViewController = [UICameraViewController loadFromNib];
-    
+    [cameraViewController setImage:image];
+    cameraViewController.imageUrl = imageUrl;
     [_mainViewController.navigationController pushViewController:cameraViewController animated:YES];
 }
 

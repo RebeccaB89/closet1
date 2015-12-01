@@ -76,19 +76,28 @@
                         <constraint firstAttribute="bottom" secondItem="8e3-C1-8ec" secondAttribute="bottom" id="nLe-3A-bo4"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-mW-quf" userLabel="Favorite Button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-mW-quf" userLabel="Favorite Button">
                     <rect key="frame" x="532" y="193" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="DeT-Nf-Qz4"/>
+                        <constraint firstAttribute="width" constant="48" id="twF-p7-3OW"/>
+                    </constraints>
                     <state key="normal" title="Button" image="favoriteDisabled.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="favorite.png"/>
+                    <connections>
+                        <action selector="favoriteClicked:" destination="-1" eventType="touchUpInside" id="6C3-l3-qEM"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="wXc-nd-S6b" firstAttribute="top" secondItem="hIl-mW-quf" secondAttribute="bottom" constant="8" id="2tH-bR-0Ko"/>
                 <constraint firstItem="Iht-yq-RaF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="6We-eC-yED"/>
                 <constraint firstAttribute="bottom" secondItem="wXc-nd-S6b" secondAttribute="bottom" constant="20" id="DLs-0E-v0w"/>
                 <constraint firstItem="wXc-nd-S6b" firstAttribute="top" secondItem="Iht-yq-RaF" secondAttribute="bottom" constant="49" id="Hw4-BZ-MBl"/>
+                <constraint firstAttribute="trailing" secondItem="hIl-mW-quf" secondAttribute="trailing" constant="20" id="IGo-z5-T0Q"/>
                 <constraint firstAttribute="centerX" secondItem="wXc-nd-S6b" secondAttribute="centerX" id="NTT-Xi-oq7"/>
                 <constraint firstAttribute="centerX" secondItem="Iht-yq-RaF" secondAttribute="centerX" id="X3R-RA-e5Q"/>
                 <constraint firstAttribute="trailing" secondItem="wXc-nd-S6b" secondAttribute="trailing" constant="20" id="hKs-hi-b0Z"/>

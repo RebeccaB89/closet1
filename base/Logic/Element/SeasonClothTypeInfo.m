@@ -8,6 +8,8 @@
 
 #import "SeasonClothTypeInfo.h"
 
+#import "NSDate+Weather.h"
+
 @implementation SeasonClothTypeInfo
 
 + (SeasonClothTypeInfo *)seasonWithType:(SeasonClothType)seasonClothType
@@ -87,6 +89,73 @@
         default:
             return NLS(@"Summer");
     }
+}
+
+- (BOOL)isGoodForDate:(NSDate *)date withDegree:(CGFloat)degree
+{
+    [date isSummer];
+    [date isSpring];
+    [date isAutumn];
+    [date isWinter];
+    
+    [date isMorning];
+    [date isNoon];
+    [date isNight];
+    
+    [date hourOfDate];
+
+    switch (self.seasonType)
+    {
+        case summerSeasonClothType:
+        {
+            if ([date isWinter] || [date isAutumn])
+            {
+                return NO;
+            }
+            
+            break;
+        }
+        case winterSeasonClothType:
+        {
+            if ([date isWinter] || [date isAutumn])
+            {
+                return NO;
+            }
+            
+            break;
+        }
+        case springSeasonClothType:
+        {
+            if ([date isWinter] || [date isAutumn])
+            {
+                return NO;
+            }
+            
+            break;
+
+        }
+        case fallSeasonClothType:
+        {
+            if ([date isWinter] || [date isAutumn])
+            {
+                return NO;
+            }
+            
+            break;
+
+        }
+        default:
+        {
+            if ([date isWinter] || [date isAutumn])
+            {
+                return NO;
+            }
+            
+            break;
+        }
+    }
+    
+    return YES;
 }
 
 @end

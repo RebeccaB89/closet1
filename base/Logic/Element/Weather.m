@@ -150,6 +150,18 @@
     _cDegrees = [Weather fahrenheitToCelcius:_fDegrees];
 }
 
+- (void)setCDegreesTomorrow:(float)cDegreesTomorrow
+{
+    _cDegreesTomorrow = cDegreesTomorrow;
+    _fDegreesTomorrow = [Weather celciusToFahrenheit:_cDegreesTomorrow];
+}
+
+- (void)setFDegreesTomorrow:(float)fDegreesTomorrow
+{
+    _fDegreesTomorrow = fDegreesTomorrow;
+    _cDegreesTomorrow = [Weather fahrenheitToCelcius:_fDegreesTomorrow];
+}
+
 - (void)fillWithDictionaryElement:(id)element
 {
     [super fillWithDictionaryElement:element];
@@ -172,16 +184,18 @@
         units = [self getObjectFromKey:element key:@"units"];
     }
     NSDictionary *conditions = [self getObjectFromKey:item key:@"yweather:condition"];
+
     if (!conditions)
     {
         conditions = [self getObjectFromKey:item key:@"condition"];
     }
 
+    NSString *temperatureUnit;
     if (conditions)
     {
         if (units)
         {
-            NSString *temperatureUnit = [self getObjectFromKey:units key:@"temperature"];
+            temperatureUnit = [self getObjectFromKey:units key:@"temperature"];
             NSString *temperature = [self getObjectFromKey:conditions key:@"temp"];
             if ([temperatureUnit isEqualToString:YAHOO_FAHRENHEIT_UNIT])
             {
@@ -196,6 +210,62 @@
         self.condition = [self getObjectFromKey:conditions key:@"text"];
         int code = [[self getObjectFromKey:conditions key:@"code"] intValue];
         self.imageUrl = [NSString stringWithFormat:@"http://l.yimg.com/a/i/us/nws/weather/gr/%dd.png", code];
+    }
+    
+    NSArray *forecast = [self getObjectFromKey:item key:@"forecast"];
+
+    if (forecast)
+    {
+        NSDictionary *today = [forecast firstObject];
+        if (today)
+        {
+            NSString *temperatureHight = [self getObjectFromKey:today key:@"high"];
+            CGFloat tempHight = [temperatureHight floatValue];
+            
+            NSString *temperatureLow = [self getObjectFromKey:today key:@"low"];
+            CGFloat tempLow = [temperatureLow floatValue];
+            NSString *text = [self getObjectFromKey:today key:@"text"];
+            
+            NSMutableString *todayInfoStr = [NSMutableString string];
+            [todayInfoStr appendFormat:@"%@\n", text];
+            [todayInfoStr appendFormat:@"High: %@ ", temperatureHight];
+            [todayInfoStr appendFormat:@"Low: %@", temperatureLow];
+
+            self.todayInfo = todayInfoStr;
+        }
+        
+        NSDictionary *tomorrow;
+        if (forecast.count > 1)
+        {
+            tomorrow = [forecast objectAtIndex:1];
+        }
+        
+        if (tomorrow)
+        {
+            NSString *temperatureHight = [self getObjectFromKey:tomorrow key:@"high"];
+            CGFloat tempHight = [temperatureHight floatValue];
+            
+            NSString *temperatureLow = [self getObjectFromKey:tomorrow key:@"low"];
+            CGFloat tempLow = [temperatureLow floatValue];
+            NSString *text = [self getObjectFromKey:tomorrow key:@"text"];
+            
+            NSMutableString *tomorrowInfoStr = [NSMutableString string];
+            [tomorrowInfoStr appendFormat:@"%@\n", text];
+            [tomorrowInfoStr appendFormat:@"High: %@ ", temperatureHight];
+            [tomorrowInfoStr appendFormat:@"Low: %@", temperatureLow];
+            
+            self.tomorrowInfo = tomorrowInfoStr;
+            
+            CGFloat tempTomorrow = (tempHight + tempLow )/ 2;
+            if ([temperatureUnit isEqualToString:YAHOO_FAHRENHEIT_UNIT])
+            {
+                self.fDegreesTomorrow = tempTomorrow;
+            }
+            else if ([temperatureUnit isEqualToString:YAHOO_CELCIUS_UNIT])
+            {
+                self.cDegreesTomorrow = tempTomorrow;
+            }
+        }
     }
     
     NSDictionary *wind = [self getObjectFromKey:element key:@"yweather:wind"];

@@ -13,6 +13,7 @@
     __weak IBOutlet UICollectionView *_clothsCollectionView;
     NSDictionary *_cloths;
     NSArray *_sections;
+    NSArray *_favorites;
 }
 
 @end

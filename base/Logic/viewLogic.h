@@ -21,7 +21,7 @@
 - (void)applicationLaunched; // call this on application launch
 
 - (void)presentMainViewController;
-- (void)presentCameraViewController;
+- (void)presentCameraViewController:(UIImage *)image withUrl:(NSURL *)imageUrl;
 - (void)presentDresserViewController;
 - (void)presentCostumeViewController;
 - (void)presentSettingsViewController;

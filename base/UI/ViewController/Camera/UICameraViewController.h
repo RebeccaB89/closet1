@@ -11,7 +11,6 @@
 
 @interface UICameraViewController : UIViewController <UIImagePickerControllerDelegate>
 {
-    
     __weak IBOutlet UIView *_weatherPlaceholder;
     
     __weak IBOutlet UIButton *_cameraButton;
@@ -30,5 +29,7 @@
 
 - (IBAction)addClicked:(UIButton *)sender;
 
+@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSURL *imageUrl;
 
 @end

@@ -20,5 +20,6 @@
 }
 
 @property (nonatomic, strong) Cloth *clothInfo;
+@property (nonatomic, unsafe_unretained) BOOL popToRoot;
 
 @end

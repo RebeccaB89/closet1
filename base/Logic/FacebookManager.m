@@ -85,6 +85,11 @@ static FacebookManager *sharedInstance = nil;
 {
     UIImage *image = [UIImage imageWithContentsOfFile:clothToShared.imagePath];
     
+    if (!image)
+    {
+        image = clothToShared.image;
+    }
+    
     FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
     photo.image = image;
     photo.userGenerated = YES;

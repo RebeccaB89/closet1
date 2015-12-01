@@ -86,7 +86,7 @@ static WeatherLogic *sharedInstance = nil;
 - (NSURLRequest *)createGetWeatherForCoordinatesRequest:(double)latitute
                                               longitude:(double)longitude
 {
-    NSString *woeidQuery = [NSString stringWithUTF8String:[YAHOO_SELECT_WEATHER_FOR_COORDINATES(latitute, longitude) UTF8String]];
+    NSString *woeidQuery = [NSString stringWithUTF8String:[YAHOO_SELECT_WEATHER_FOR_COORDINATES_BY_CITY(latitute, longitude) UTF8String]];
     woeidQuery = [woeidQuery stringByEscapingForURLArgument];
     
     NSMutableString* yahooRequest = [NSMutableString stringWithUTF8String:[YAHOO_API_BASE UTF8String]];

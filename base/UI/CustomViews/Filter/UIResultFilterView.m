@@ -73,7 +73,7 @@
 
 - (void)reloadData
 {
-    NSArray *clothsFiltered = [[InfoLogic sharedInstance] clothsForClothTypeFilters:_queryFilter];
+    NSArray *clothsFiltered = [[FilterLogic sharedInstance] clothsForClothTypeFilters:_queryFilter];
     _costumeResults = [self resultCostumesForClothsFiltered:clothsFiltered];
 }
 

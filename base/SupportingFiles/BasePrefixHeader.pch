@@ -18,6 +18,8 @@
 
 #import "Shared.h"
 #import "Constants.h"
+#import "infoLogic.h"
+#import "FilterLogic.h"
 
 #import <UIKit/UIKit.h>
 

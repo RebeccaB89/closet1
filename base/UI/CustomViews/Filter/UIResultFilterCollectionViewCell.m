@@ -26,9 +26,9 @@
 {
     if (_costumeResultInfo)
     {
-        UIImage *upImage = IMAGE(_costumeResultInfo.upClothInfo.imagePath);
+        UIImage *upImage = _costumeResultInfo.upClothInfo.image;
         _upImageView.image = upImage;
-        UIImage *bottomImage = IMAGE(_costumeResultInfo.bottomClothInfo.imagePath);
+        UIImage *bottomImage = _costumeResultInfo.bottomClothInfo.image;
         _bottomImageView.image = bottomImage;
     }
     else
