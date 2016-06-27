@@ -109,7 +109,7 @@
 
 + (NSString *)questionChooser
 {
-    return @"item cloth?";
+    return @"Cloth type";
 }
 
 - (BOOL)isUPItem

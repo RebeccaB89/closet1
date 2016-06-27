@@ -23,6 +23,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CAGradientLayer *btnGradient = [CAGradientLayer layer];
+    //[UIColor lightGrayColor]
+    [self.view.layer insertSublayer:btnGradient atIndex:0];
+    btnGradient.frame = self.view.bounds;
+    btnGradient.colors = [NSArray arrayWithObjects:
+                          (id)LOGIN_BUTTON_GRADIENT_START.CGColor,
+                          (id)LOGIN_BUTTON_GRADIENT_END.CGColor,
+                          nil];
+
+    
     _sharedFBbutton = [[FBSDKShareButton alloc] init];
     _sharedFBbutton.center =  CGPointMake(_sharePlaceholder.width/2, _sharePlaceholder.height/2);
     [_sharePlaceholder addSubview:_sharedFBbutton];

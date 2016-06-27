@@ -44,10 +44,13 @@
 #define YAHOO_SELECT_ALL_WOEID_FOR_PLACE_NAME(placeName)    [NSString stringWithFormat:@"SELECT * FROM geo.places WHERE text='%@'", placeName]
 #define YAHOO_SELECT_WOEID_FOR_PLACE_NAME(placeName)        [NSString stringWithFormat:@"SELECT woeid FROM geo.places WHERE text='%@'", placeName]
 #define YAHOO_SELECT_WEATHER_FOR_WOEID(woeid)               [NSString stringWithFormat:@"select * from weather.forecast where woeid='%@'", woeid]
-#define YAHOO_SELECT_WEATHER_FOR_PLACE_NAME(placeName)      [NSString stringWithFormat:@"SELECT * FROM weather.forecast where woeid IN (%@)",YAHOO_SELECT_WOEID_FOR_PLACE_NAME(placeName)]
+#define YAHOO_SELECT_WEATHER_FOR_PLACE_NAME(placeName)      [NSString stringWithFormat:@"SELECT * FROM weather.forecast where woeid IN (%@) and u='c'",YAHOO_SELECT_WOEID_FOR_PLACE_NAME(placeName)]
 #define YAHOO_SELECT_WEATHER_FOR_COORDINATES(x, y)          [NSString stringWithFormat:@"select * from weather.forecast where woeid IN (%@)",YAHOO_SELECT_CITY_WOEID_FOR_COORDINATES(x,y)]
 
 #define YAHOO_SELECT_WEATHER_FOR_COORDINATES_BY_CITY(x, y)          [NSString stringWithFormat:@"select * from weather.forecast where woeid IN (SELECT woeid FROM geo.placefinder WHERE text in (%@)) and u='c'",YAHOO_SELECT_CITY_NAME_FOR_COORDINATES(x,y)]
+
+#define YAHOO_SELECT_WEATHER_FOR_NAME_PLACE(placeName)          [NSString stringWithFormat:@"select * from weather.forecast where woeid IN (SELECT woeid FROM geo.placefinder WHERE text = %@)) and u='c'", placeName]
+
 
 /* End */
 

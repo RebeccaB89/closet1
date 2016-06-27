@@ -44,6 +44,11 @@
     return nil;
 }
 
+- (UIColor *)textColor
+{
+    return [UIColor blackColor];
+}
+
 - (NSString *)strType
 {
     return nil;
@@ -69,8 +74,8 @@
     if ([object isKindOfClass:[self class]])
     {
         ClothType *another = (ClothType *)object;
-        
-        return [self.strType isEqualToString:another.strType];
+        BOOL strEqual = [self.strType isEqualToString:another.strType];
+        return strEqual;
     }
     
     return NO;

@@ -9,6 +9,10 @@
 #ifndef CasinoForPP_NLShared_h
 #define CasinoForPP_NLShared_h
 
+#define LOGIN_BUTTON_GRADIENT_START     [UIColor colorWithRed:75.0/255.0f green:162.0/255.0f blue:196.0/255.0f alpha:1]
+#define LOGIN_BUTTON_GRADIENT_medium     [UIColor clearColor]
+#define LOGIN_BUTTON_GRADIENT_END       [UIColor whiteColor]
+
 #define NLS(key) NSLocalizedString(key, nil)
 #define IMAGE(name) [UIImage imageNamed:name]
 #define IMAGE_FROM_URL(URL) URL ? [Shared cacheImageFromURL:URL] : nil

@@ -11,6 +11,7 @@
 #import "WeatherLogic.h"
 #import "UserInfoLogic.h"
 #import "NSDate-Expanded.h"
+#import "ColorSchemeLogic.h"
 
 @implementation FilterLogic
 
@@ -34,8 +35,8 @@ static FilterLogic *sharedInstance = nil;
     
     if (self)
     {
-        _accordingFilterByMeteo = YES;
-        _accordingFilterByColorScheme = NO;
+        _accordingFilterByMeteo = filterMeteoOptionManual;
+        _accordingFilterByColorScheme = YES;
     }
     
     return self;
@@ -75,6 +76,8 @@ static FilterLogic *sharedInstance = nil;
         filterColor = [[FilterLogic sharedInstance] allItemsForClothType:[ColorClothTypeInfo class]];
     }
     
+    filterColor = [self filtersAccordingFilterByColorScheme:filterColor];
+    
     for (ClothType *clothType in filterColor)
     {
         if ([clothType isKindOfClass:[ColorClothTypeInfo class]])
@@ -109,13 +112,22 @@ static FilterLogic *sharedInstance = nil;
     [result addObjectsFromArray:clothToAdd];
     
     result = [self clothsAccordingFilterByMeteo:result];
+    result = [self removeDuplicatesResults:result];
+    
     
     return result;
 }
 
+- (NSMutableArray *)removeDuplicatesResults:(NSMutableArray *)results
+{
+    NSSet *set = [NSSet setWithArray:results];
+    NSMutableArray *test = [[set allObjects] mutableCopy];
+    return test;
+}
+
 - (NSMutableArray *)clothsAccordingFilterByMeteo:(NSMutableArray *)cloths
 {
-    if (!self.accordingFilterByMeteo)
+    if (self.accordingFilterByMeteo == filterMeteoOptionManual)
     {
         return cloths;
     }
@@ -158,14 +170,42 @@ static FilterLogic *sharedInstance = nil;
     return cloths;
 }
 
-- (NSArray *)clothsAccordingFilterByColorScheme:(NSArray *)cloths
+- (NSArray *)filtersAccordingFilterByColorScheme:(NSArray *)filters
 {
     if (!self.accordingFilterByColorScheme)
     {
-        return cloths;
+        return filters;
     }
     
-    return cloths;
+    NSMutableArray *newFilters = [NSMutableArray arrayWithArray:filters];
+    
+    for (ClothType *clothType in filters)
+    {
+        if ([clothType isKindOfClass:[ColorClothTypeInfo class]])
+        {
+            NSArray *colorsLikely = [[ColorSchemeLogic sharedInstance] colorsLikelyColor:clothType];
+            for (NSNumber *color in colorsLikely)
+            {
+                ColorClothTypeInfo *colorFilter = [ColorClothTypeInfo colorWithType:[color integerValue]];
+                [newFilters addObject:colorFilter];
+            }
+        }
+    }
+    
+    NSMutableArray *filtersWithoutDuplicates = [NSMutableArray array];
+    for (ClothType *clothType in newFilters)
+    {
+        if (![filtersWithoutDuplicates containsObject:clothType])
+        {
+            [filtersWithoutDuplicates addObject:clothType];
+        }
+    }
+    
+    //NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:newFilters];
+    //NSArray *filtersWithoutDuplicate = [orderedSet array];
+    NSArray *filteredEvents =  [newFilters valueForKeyPath:@"@distinctUnionOfObjects.self"];
+
+    return filtersWithoutDuplicates;
 }
 
 - (NSDictionary *)clothsFiteredByItemType:(NSArray *)clothsFiltered

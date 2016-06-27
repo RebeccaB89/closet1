@@ -48,6 +48,7 @@ static WeatherLogic *sharedInstance = nil;
 
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationChanged:) name:LOCATION_CHANGED_EVENT object:nil];
 
+        [self locationChanged:nil];
     }
     
     return self;
@@ -67,6 +68,28 @@ static WeatherLogic *sharedInstance = nil;
     if (![[LocationLogic sharedInstance] isLocationServiceAvailable])
         return NO;
     CLLocation *location = [LocationLogic sharedInstance].lastLocationCoordinates;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithObjects:@"en", nil] forKey:@"AppleLanguages"];
+
+    CLGeocoder *ceo = [[CLGeocoder alloc]init];
+    [ceo reverseGeocodeLocation:location
+              completionHandler:^(NSArray *placemarks, NSError *errorGeo)
+    {
+        if (!errorGeo)
+        {
+            CLPlacemark *placemark = [placemarks firstObject];
+
+            NSString *name = placemark.locality;
+            if (name.length == 0)
+            {
+                name = placemark.name;
+            }
+            [self weatherInfoForNamePlace:name target:target error:error started:startedHandler finished:finishedHandler];
+        }
+        
+     }
+     ];
+    return nil;
     
     return [self weatherInfoForCoordinates:location.coordinate.latitude longitude:location.coordinate.longitude target:target error:error started:startedHandler finished:finishedHandler];
 }
@@ -101,6 +124,27 @@ static WeatherLogic *sharedInstance = nil;
     return request;
 }
 
+- (NSURLRequest *)createGetWeatherForNamePlaceRequest:(NSString *)place
+{
+    if (place.length == 0)
+    {
+        return nil;
+    }
+    NSString *woeidQuery = [NSString stringWithUTF8String:[YAHOO_SELECT_WEATHER_FOR_PLACE_NAME(place) UTF8String]];
+    woeidQuery = [woeidQuery stringByEscapingForURLArgument];
+    
+    NSMutableString* yahooRequest = [NSMutableString stringWithUTF8String:[YAHOO_API_BASE UTF8String]];
+    
+    [yahooRequest appendString:woeidQuery];
+    [yahooRequest appendString:YAHOO_APIS_FORMAT];
+    [yahooRequest appendString:YAHOO_APIS_COMPLEMENT];
+    
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:yahooRequest]];
+    
+    return request;
+}
+
 - (NSURLRequest *)createGetCityForCoordinatesRequest:(double)latitute
                                            longitude:(double)longitude
 {
@@ -119,6 +163,83 @@ static WeatherLogic *sharedInstance = nil;
     return request;
 }
 
+- (BOOL)weatherInfoForNamePlace:(NSString *)namePlace
+                           target:(id)target
+                            error:(NSError **)error
+                          started:(LogicStarted)startedHandler
+                         finished:(LogicFinished)finishedHandler
+{
+    NSURLRequest *request = [self createGetWeatherForNamePlaceRequest:namePlace];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+      {
+          if (error)
+          {
+              return ;
+          }
+          
+          NSError *jsonError = nil;
+          NSDictionary *jsonResponse = [NSJSONSerialization
+                                        JSONObjectWithData: data
+                                        options: NSJSONReadingMutableContainers
+                                        error: &jsonError];
+          
+          Weather *tempWeather = nil;
+          if (!error && jsonResponse)
+          {
+              tempWeather = [[Weather alloc] init];
+              
+              NSDictionary *query = [jsonResponse objectForKey:@"query"];
+              NSDictionary *diagnostics = [query objectForKey:@"diagnostics"];
+              NSArray *urls = [diagnostics objectForKey:@"url"];
+              NSString *woeid = nil;
+              
+              for (NSDictionary *url in urls)
+              {
+                  NSString *content = [url objectForKey:@"content"];
+                  NSRange range = [content rangeOfString:@"w="];
+                  if (range.location != NSNotFound)
+                  {
+                      woeid = [content substringFromIndex:range.location+range.length];
+                      break;
+                  }
+              }
+              
+              NSDictionary *results = [query objectForKey:@"results"];
+              id channels = [results objectForKey:@"channel"];
+              NSDictionary *channel = nil;
+              
+              if ([channels isKindOfClass:[NSArray class]])
+              {
+                  channel = (NSDictionary *)[channels firstObject];
+              }
+              else if ([channels isKindOfClass:[NSDictionary class]])
+              {
+                  channel = (NSDictionary *)channels;
+              }
+              if (!channel)
+              {
+                  tempWeather = nil;
+              }
+              [tempWeather fillWithDictionaryElement:channel];
+              tempWeather.itemId = woeid;
+          }
+          if (!error)
+          {
+              error = jsonError;
+          }
+          if (finishedHandler)
+          {
+              finishedHandler(error, tempWeather);
+          }
+          
+      }] resume];
+    
+    return YES;
+}
+
 - (BOOL)weatherInfoForCoordinates:(double)latitude
                         longitude:(double)longitude
                            target:(id)target
@@ -132,6 +253,11 @@ static WeatherLogic *sharedInstance = nil;
     
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
+        if (error)
+        {
+            return ;
+        }
+        
         NSError *jsonError = nil;
         NSDictionary *jsonResponse = [NSJSONSerialization
                               JSONObjectWithData: data
@@ -258,13 +384,13 @@ static WeatherLogic *sharedInstance = nil;
                 _currentWeather = (Weather *)data;
                 [Shared postNotification:WEATHER_CHANGED_EVENT userInfo:nil forObject:nil];
                 
-                [self cityForCurrentLocation:_currentWeather error:&error started:^(id data) {
-                    
-                } finished:^(NSError *error, id data)
-                {
-                    _currentWeather = (Weather *)data;
-                    [Shared postNotification:WEATHER_CHANGED_EVENT userInfo:nil forObject:nil];
-                }];
+//                [self cityForCurrentLocation:_currentWeather error:&error started:^(id data) {
+//                    
+//                } finished:^(NSError *error, id data)
+//                {
+//                    _currentWeather = (Weather *)data;
+//                    [Shared postNotification:WEATHER_CHANGED_EVENT userInfo:nil forObject:nil];
+//                }];
             }
         }] ;
     }

@@ -9,6 +9,9 @@
 #import "UICostumeViewController.h"
 #import "EventClothTypeInfo.h"
 #import "ClothTypeHelper.h"
+#import "NSDate+Weather.h"
+#import "NSDate-Expanded.h"
+#import "FilterLogic.h"
 
 @interface UICostumeViewController ()
 
@@ -19,6 +22,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CAGradientLayer *btnGradient = [CAGradientLayer layer];
+    //[UIColor lightGrayColor]
+    [self.view.layer insertSublayer:btnGradient atIndex:0];
+    btnGradient.frame = self.view.bounds;
+    btnGradient.colors = [NSArray arrayWithObjects:
+                          (id)LOGIN_BUTTON_GRADIENT_START.CGColor,
+                          (id)LOGIN_BUTTON_GRADIENT_END.CGColor,
+                          nil];
+
+    
     self.title = NLS(@"Costume");
 
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -64,6 +78,9 @@
     _resultFilterView.frame = _resultsPlaceholder.bounds;
     _resultFilterView.autoresizingMask = CELL_FULL_AUTORESIZINGMASK;
     [_resultsPlaceholder addSubview:_resultFilterView];
+    
+    [self reloadData];
+    [self layoutData];
 }
 
 - (void)reloadData
@@ -71,27 +88,101 @@
     NSMutableArray *query = [NSMutableArray array];
     for (ClothType *clothType in [_tagsView clothTypeTags])
     {
-        [query addObject:clothType.strType];
+        [query addObject:clothType];
     }
+    
+    [FilterLogic sharedInstance].accordingFilterByMeteo = _segmentedControl.selectedSegmentIndex;
+
+    ClothType *clothTypeForFilterOption = [self clothTypeForFilterOption:[[FilterLogic sharedInstance] accordingFilterByMeteo]];
+    if (clothTypeForFilterOption)
+    {
+        [query addObject:clothTypeForFilterOption];
+    }
+
     [_resultFilterView updateQueryFilter:query];
 }
 
 - (void)layoutData
 {
-    NSMutableString *filter = [NSMutableString stringWithString:NLS(@"Filter is: ")];
-    for (ClothType *clothType in [_tagsView clothTypeTags])
+    ClothType *clothTypeForFilterOption = [self clothTypeForFilterOption:[FilterLogic sharedInstance].accordingFilterByMeteo];
+    if (clothTypeForFilterOption)
     {
-        [filter appendFormat:@"%@ ", clothType.strType];
+        [self clothTypeChoosed:clothTypeForFilterOption];
     }
-    
-    _filterLabel.text = filter;
-    
-    NSMutableArray *query = [NSMutableArray array];
-    for (ClothType *clothType in [_tagsView clothTypeTags])
+
+//    NSMutableArray *query = [NSMutableArray array];
+//    for (ClothType *clothType in [_tagsView clothTypeTags])
+//    {
+//        [query addObject:clothType];
+//    }
+//    
+//    ClothType *clothTypeForFilterOption = [self clothTypeForFilterOption:[[FilterLogic sharedInstance] accordingFilterByMeteo]];
+//    if (clothTypeForFilterOption)
+//    {
+//        [query addObject:clothTypeForFilterOption];
+//    }
+//    
+//    [_resultFilterView updateQueryFilter:query];
+}
+
+- (ClothType *)clothTypeForFilterOption:(FilterMeteoOption)filterMeteoOption
+{
+    switch (filterMeteoOption)
     {
-        [query addObject:clothType];
+        case filterMeteoOptionToday:
+        {
+            NSDate *today = [NSDate date];
+            if ([today isSpring])
+            {
+                return [SeasonClothTypeInfo seasonWithType:springSeasonClothType];
+            }
+            if ([today isSummer])
+            {
+                return [SeasonClothTypeInfo seasonWithType:summerSeasonClothType];
+            }
+            if ([today isWinter])
+            {
+                return [SeasonClothTypeInfo seasonWithType:winterSeasonClothType];
+            }
+            if ([today isAutumn])
+            {
+                return [SeasonClothTypeInfo seasonWithType:fallSeasonClothType];
+            }
+
+            break;
+        }
+        case filterMeteoOptionTomorrow:
+        {
+            NSDate *today = [NSDate addDaysToDate:[NSDate date] days:1];
+            if ([today isSpring])
+            {
+                return [SeasonClothTypeInfo seasonWithType:springSeasonClothType];
+            }
+            if ([today isSummer])
+            {
+                return [SeasonClothTypeInfo seasonWithType:summerSeasonClothType];
+            }
+            if ([today isWinter])
+            {
+                return [SeasonClothTypeInfo seasonWithType:winterSeasonClothType];
+            }
+            if ([today isAutumn])
+            {
+                return [SeasonClothTypeInfo seasonWithType:fallSeasonClothType];
+            }
+            break;
+        }
+        case filterMeteoOptionManual:
+        {
+            return nil;
+            break;
+        }
+            
+        default:
+            return nil;
+            break;
     }
-    [_resultFilterView updateQueryFilter:query];
+    return nil;
 }
 
 - (int)numOfColorTypeInTagsView
@@ -109,6 +200,57 @@
     return sum;
 }
 
+- (void)clothTypeChoosed:(ClothType *)clothType
+{
+    if ([clothType isKindOfClass:[EventClothTypeInfo class]])
+    {
+        _filter2TopContraint.constant = - _seasonFiltersView.height;
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+    if ([clothType isKindOfClass:[ColorClothTypeInfo class]] && [self numOfColorTypeInTagsView] >=3)
+    {
+        _filter3TopConstraint.constant = - _eventFiltersView.height;
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+    if ([clothType isKindOfClass:[SeasonClothTypeInfo class]])
+    {
+        _filter1TopConstraint.constant = - _tagsPlaceHolder.height;
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
+- (void)clothTypeRemoved:(ClothType *)clothType
+{
+    if ([clothType isKindOfClass:[EventClothTypeInfo class]])
+    {
+        _filter2TopContraint.constant = 0;
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+    if ([clothType isKindOfClass:[ColorClothTypeInfo class]])
+    {
+        _filter3TopConstraint.constant = 0;
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+    if ([clothType isKindOfClass:[SeasonClothTypeInfo class]])
+    {
+        _filter1TopConstraint.constant = 0;
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+    }
+}
+
+
 /* UIFilterItemView Delegates */
 
 - (void)filterItemViewClicked:(UIFilterItemView *)filterItemView
@@ -119,28 +261,10 @@
     }
     [_tagsView addClothType:filterItemView.clothType];
     
-    if ([filterItemView.clothType isKindOfClass:[EventClothTypeInfo class]])
-    {
-        _filter2TopContraint.constant = - _seasonFiltersView.height;
-        [UIView animateWithDuration:0.4 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
-    if ([filterItemView.clothType isKindOfClass:[ColorClothTypeInfo class]] && [self numOfColorTypeInTagsView] >=3)
-    {
-        _filter3TopConstraint.constant = - _eventFiltersView.height;
-        [UIView animateWithDuration:0.4 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
-    if ([filterItemView.clothType isKindOfClass:[SeasonClothTypeInfo class]])
-    {
-        _filter1TopConstraint.constant = - _tagsPlaceHolder.height;
-        [UIView animateWithDuration:0.4 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
+    [self clothTypeChoosed:filterItemView.clothType];
     
+    [self reloadData];
+
     [self layoutData];
 }
 
@@ -150,31 +274,36 @@
 
 - (void)tagsView:(UITagsView *)tagView didDeleteTag:(UIBubbleContactItemView *)bubbleItemTag withClothTypeInfo:(ClothType *)clothTypeInfo
 {
-    if ([clothTypeInfo isKindOfClass:[EventClothTypeInfo class]])
-    {
-        _filter2TopContraint.constant = 0;
-        [UIView animateWithDuration:0.4 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
-    if ([clothTypeInfo isKindOfClass:[ColorClothTypeInfo class]])
-    {
-        _filter3TopConstraint.constant = 0;
-        [UIView animateWithDuration:0.4 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
-    if ([clothTypeInfo isKindOfClass:[SeasonClothTypeInfo class]])
-    {
-        _filter1TopConstraint.constant = 0;
-        [UIView animateWithDuration:0.4 animations:^{
-            [self.view layoutIfNeeded];
-        }];
-    }
+    [self clothTypeRemoved:clothTypeInfo];
+    
+    [self reloadData];
     
     [self layoutData];
 }
 
 /* End UITagsView Delegates */
+
+- (IBAction)filterOptionChanged:(UISegmentedControl *)sender
+{
+    [_tagsView removeAllTabs];
+    
+    ClothType *clothTypeForFilterOptionRemoved = [self clothTypeForFilterOption:[FilterLogic sharedInstance].accordingFilterByMeteo];
+    if (clothTypeForFilterOptionRemoved)
+    {
+        [self clothTypeRemoved:clothTypeForFilterOptionRemoved];
+    }
+    
+    [FilterLogic sharedInstance].accordingFilterByMeteo = _segmentedControl.selectedSegmentIndex;
+    
+    ClothType *clothTypeForFilterOption = [self clothTypeForFilterOption:[FilterLogic sharedInstance].accordingFilterByMeteo];
+    if (clothTypeForFilterOption)
+    {
+        [self clothTypeChoosed:clothTypeForFilterOption];
+    }
+    
+    [self reloadData];
+    
+    [self layoutData];
+}
 
 @end

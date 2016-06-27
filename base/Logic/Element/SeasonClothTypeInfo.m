@@ -69,6 +69,11 @@
     }
 }
 
++ (NSString *)questionChooser
+{
+    return @"Season";
+}
+
 - (NSString *)strType
 {
     switch (self.seasonType)
@@ -98,8 +103,7 @@
     [date isAutumn];
     [date isWinter];
     
-    [date isMorning];
-    [date isNoon];
+    [date isDay];
     [date isNight];
     
     [date hourOfDate];
@@ -108,54 +112,150 @@
     {
         case summerSeasonClothType:
         {
-            if ([date isWinter] || [date isAutumn])
+            if ([date isSummer])
+            {
+                return YES;
+            }
+            if ([date isWinter])
             {
                 return NO;
             }
-            
+            if ([date isSpring])
+            {
+                if ([date isDay] && degree >= 22)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree >= 18)
+                {
+                    return YES;
+                }
+            }
+            if ([date isAutumn])
+            {
+                if ([date isDay] && degree >= 25)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree >= 19)
+                {
+                    return YES;
+                }
+            }
             break;
         }
         case winterSeasonClothType:
         {
-            if ([date isWinter] || [date isAutumn])
+            if ([date isSummer])
             {
                 return NO;
             }
-            
+            if ([date isWinter])
+            {
+                return YES;
+            }
+            if ([date isSpring])
+            {
+                if ([date isDay] && degree <= 15)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree <= 14)
+                {
+                    return YES;
+                }
+            }
+            if ([date isAutumn])
+            {
+                if ([date isDay] && degree <= 15)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree <= 13)
+                {
+                    return YES;
+                }
+            }
             break;
         }
         case springSeasonClothType:
         {
-            if ([date isWinter] || [date isAutumn])
+            if ([date isAutumn])
             {
                 return NO;
+            }
+            if ([date isSpring])
+            {
+                return YES;
+            }
+            if ([date isWinter])
+            {
+                if ([date isDay] && degree > 16)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree > 13)
+                {
+                    return YES;
+                }
+            }
+            if ([date isSummer])
+            {
+                if ([date isDay] && degree <= 21)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree <= 17)
+                {
+                    return YES;
+                }
             }
             
             break;
-
         }
         case fallSeasonClothType:
         {
-            if ([date isWinter] || [date isAutumn])
+            if ([date isSpring])
             {
                 return NO;
             }
-            
+            if ([date isAutumn])
+            {
+                return YES;
+            }
+            if ([date isWinter])
+            {
+                if ([date isDay] && degree > 18)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree > 12)
+                {
+                    return YES;
+                }
+            }
+            if ([date isSummer])
+            {
+                if ([date isDay] && degree <= 24)
+                {
+                    return YES;
+                }
+                if ([date isNight] && degree <= 19)
+                {
+                    return YES;
+                }
+            }
             break;
 
         }
         default:
         {
-            if ([date isWinter] || [date isAutumn])
-            {
-                return NO;
-            }
-            
+            return NO;
             break;
         }
     }
     
-    return YES;
+    return NO;
 }
 
 @end

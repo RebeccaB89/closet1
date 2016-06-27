@@ -59,6 +59,12 @@
     [self layoutData];
 }
 
+- (void)removeAllTabs
+{
+    [_clothTypeTags removeAllObjects];
+    [self layoutData];
+}
+
 - (void)layoutData
 {
     NSMutableArray *tagsStrs = [NSMutableArray array];

@@ -21,6 +21,16 @@
 {
     [super viewDidLoad];
     
+    CAGradientLayer *btnGradient = [CAGradientLayer layer];
+    //[UIColor lightGrayColor]
+    [self.view.layer insertSublayer:btnGradient atIndex:0];
+    btnGradient.frame = self.view.bounds;
+    btnGradient.colors = [NSArray arrayWithObjects:
+                          (id)LOGIN_BUTTON_GRADIENT_START.CGColor,
+                          (id)LOGIN_BUTTON_GRADIENT_END.CGColor,
+                          nil];
+
+    
     self.title = NLS(@"Settings");
 
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
@@ -33,12 +43,12 @@
     _weatherView.autoresizingMask = CELL_FULL_AUTORESIZINGMASK;
     _weatherView.weatherInfo = [[WeatherLogic sharedInstance] currentWeather];
     [_weatherPlaceholder addSubview:_weatherView];
-    _weatherPlaceholder.backgroundColor = [UIColor redColor];
+    _weatherPlaceholder.backgroundColor = [UIColor clearColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weatherChanged:) name:WEATHER_CHANGED_EVENT object:nil];
     
+    _colorSchemeLabel.text = NLS(@"Color scheme filtering: ");
     [self layoutData];
-    
 }
 
 - (void)weatherChanged:(NSNotification *)note
@@ -48,53 +58,12 @@
 
 - (void)layoutData
 {
-    switch ([[UserInfoLogic sharedInstance] filterDateType])
-    {
-        case todayFilterDataType:
-        {
-            [_filterDateButton setTitle:NLS(@"Filter for today") forState:UIControlStateNormal];
-            break;
-        }
-        case tomorrowFilterDataType:
-        {
-            [_filterDateButton setTitle:NLS(@"Filter for tomorrow") forState:UIControlStateNormal];
-
-            break;
-        }
-            
-            
-        default:
-        {
-            [_filterDateButton setTitle:NLS(@"Filter for today") forState:UIControlStateNormal];
-            break;
-        }
-    }
+    _colorSchemeSwitch.on = [[FilterLogic sharedInstance] accordingFilterByColorScheme];
 }
 
-- (IBAction)filterDateClicked:(UIButton *)sender
+- (IBAction)colorSwitchChanged:(UISwitch *)sender
 {
-    switch ([[UserInfoLogic sharedInstance] filterDateType])
-    {
-        case todayFilterDataType:
-        {
-            [UserInfoLogic sharedInstance].filterDateType = tomorrowFilterDataType;
-            break;
-        }
-        case tomorrowFilterDataType:
-        {
-            [UserInfoLogic sharedInstance].filterDateType = todayFilterDataType;
-            
-            break;
-        }
-            
-            
-        default:
-        {
-            [UserInfoLogic sharedInstance].filterDateType = todayFilterDataType;
-            break;
-        }
-    }
-    
+    [FilterLogic sharedInstance].accordingFilterByColorScheme = sender.isOn;
     [self layoutData];
 }
 

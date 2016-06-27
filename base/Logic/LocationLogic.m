@@ -8,7 +8,7 @@
 
 #import "LocationLogic.h"
 
-#define SIMULATE_LOCATION 0
+#define SIMULATE_LOCATION 1
 #define DIRECTIONS_LOGIC_LAST_LOCATION_KEY      @"lastLocation"
 
 
@@ -20,6 +20,7 @@ static LocationLogic *sharedInstance = nil;
 
 + (LocationLogic *)sharedInstance
 {
+
     @synchronized(self)
     {
         if (sharedInstance == nil)
@@ -75,7 +76,8 @@ static LocationLogic *sharedInstance = nil;
 - (CLLocation *)lastLocationCoordinates
 {
 #if SIMULATE_LOCATION
-    return [[CLLocation alloc] initWithLatitude:32.0833 longitude:34.8000];
+    return [[CLLocation alloc] initWithLatitude:31.771959
+ longitude:35.217018];
 #endif
     CLLocation *lastLocation = _lastLocation;
     return lastLocation;

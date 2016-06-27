@@ -25,7 +25,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iht-yq-RaF" userLabel="Fcbk SharePlaceholder">
                     <rect key="frame" x="250" y="100" width="100" height="100"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="6Xe-ef-C7x"/>
                         <constraint firstAttribute="height" constant="100" id="UXr-wQ-im4"/>
@@ -60,7 +60,7 @@
                             </variation>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="imP-3p-HFb" firstAttribute="bottom" secondItem="8e3-C1-8ec" secondAttribute="top" id="5KE-6Z-8z7"/>
                         <constraint firstItem="hQw-aP-l6r" firstAttribute="height" secondItem="8e3-C1-8ec" secondAttribute="height" id="6CW-eX-5KT"/>
@@ -90,16 +90,25 @@
                         <action selector="favoriteClicked:" destination="-1" eventType="touchUpInside" id="6C3-l3-qEM"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to dresser favorites :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CA-Fj-v7Z">
+                    <rect key="frame" x="329" y="193" width="193" height="48"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="wXc-nd-S6b" firstAttribute="top" secondItem="hIl-mW-quf" secondAttribute="bottom" constant="8" id="2tH-bR-0Ko"/>
                 <constraint firstItem="Iht-yq-RaF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="6We-eC-yED"/>
                 <constraint firstAttribute="bottom" secondItem="wXc-nd-S6b" secondAttribute="bottom" constant="20" id="DLs-0E-v0w"/>
                 <constraint firstItem="wXc-nd-S6b" firstAttribute="top" secondItem="Iht-yq-RaF" secondAttribute="bottom" constant="49" id="Hw4-BZ-MBl"/>
                 <constraint firstAttribute="trailing" secondItem="hIl-mW-quf" secondAttribute="trailing" constant="20" id="IGo-z5-T0Q"/>
+                <constraint firstItem="hIl-mW-quf" firstAttribute="leading" secondItem="9CA-Fj-v7Z" secondAttribute="trailing" constant="10" id="ML3-x8-Jep"/>
+                <constraint firstItem="hIl-mW-quf" firstAttribute="bottom" secondItem="9CA-Fj-v7Z" secondAttribute="bottom" id="Mw4-Tk-jjM"/>
                 <constraint firstAttribute="centerX" secondItem="wXc-nd-S6b" secondAttribute="centerX" id="NTT-Xi-oq7"/>
                 <constraint firstAttribute="centerX" secondItem="Iht-yq-RaF" secondAttribute="centerX" id="X3R-RA-e5Q"/>
+                <constraint firstItem="hIl-mW-quf" firstAttribute="top" secondItem="9CA-Fj-v7Z" secondAttribute="top" id="ZjB-5n-HmF"/>
                 <constraint firstAttribute="trailing" secondItem="wXc-nd-S6b" secondAttribute="trailing" constant="20" id="hKs-hi-b0Z"/>
                 <constraint firstAttribute="bottom" secondItem="wXc-nd-S6b" secondAttribute="bottom" constant="20" id="jQF-o8-VWM"/>
                 <constraint firstItem="wXc-nd-S6b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="rlQ-Zl-0E8"/>

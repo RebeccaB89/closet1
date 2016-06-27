@@ -17,8 +17,7 @@
 - (BOOL)isWinter;
 - (BOOL)isSpring;
 - (BOOL)isAutumn;
-- (BOOL)isMorning;
-- (BOOL)isNoon;
+- (BOOL)isDay;
 - (BOOL)isNight;
 
 @end

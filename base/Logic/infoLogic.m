@@ -145,7 +145,7 @@ static InfoLogic *sharedInstance = nil;
     if (_pants.count == 0)
     {
         Cloth *pant11 = [Cloth clothWithImagePath:@"pant1" withSeasons:[NSArray arrayWithObjects:[SeasonClothTypeInfo seasonWithType:springSeasonClothType], [SeasonClothTypeInfo seasonWithType:winterSeasonClothType] , [SeasonClothTypeInfo seasonWithType:summerSeasonClothType], [SeasonClothTypeInfo seasonWithType:fallSeasonClothType], nil]
-                                       withEvents:[NSArray arrayWithObjects: [EventClothTypeInfo eventWithType:workEventClothType],  [EventClothTypeInfo eventWithType:dateEventClothType],  [EventClothTypeInfo eventWithType:interviewEventClothType], nil]
+                                       withEvents:[NSArray arrayWithObjects: [EventClothTypeInfo eventWithType:workEventClothType],  [EventClothTypeInfo eventWithType:dateEventClothType],  [EventClothTypeInfo eventWithType:interviewEventClothType], [EventClothTypeInfo eventWithType:casualEventClothType], [EventClothTypeInfo eventWithType:formalEventClothType], nil]
                                        withColors:[NSArray arrayWithObjects:[ColorClothTypeInfo colorWithType:blueColorClothType], nil] withItemInfo:[ItemClothTypeInfo itemClothWithType:pantItemClothType]];
         pant11.delegate = self;
         [self addToArray:_pants cloth:pant11];
@@ -348,30 +348,6 @@ static InfoLogic *sharedInstance = nil;
 
 - (void)addCloth:(Cloth *)clothInfo
 {
-//    NSString *fileName = clothInfo.imageName;
-//    if (!fileName)
-//    {
-//        fileName = @"currentImage";
-//    }
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-//                                                         NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    
-//    NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Added"];
-//    NSString* path = [sourcePath stringByAppendingPathComponent:
-//                      fileName];
-//
-//    UIImage *image = [UIImage imageWithContentsOfFile:clothInfo.imagePath];
-////    if (image)
-////    {
-////        NSData *data = UIImagePNGRepresentation(image);
-////        [data writeToFile:path atomically:YES];
-////    }
-//    
-//    clothInfo.imagePath = path;
-//    clothInfo.imageName = fileName;
-//    clothInfo.image = image;
-    
     NSMutableArray *clothsToAdd = nil;
     switch (clothInfo.itemTypeInfo.itemType)
     {
@@ -401,13 +377,42 @@ static InfoLogic *sharedInstance = nil;
     
     if (![clothsToAdd containsObject:clothInfo])
     {
+        [self saveNewClothInfo:clothInfo];
         clothInfo.delegate = self;
         [clothsToAdd addObject:clothInfo];
     }
     
-   // [self performSelectorInBackground:@selector(saveOnThread) withObject:self];
     [self updateFilterCloths];
+}
 
+- (void)saveNewClothInfo:(Cloth *)clothInfo
+{
+    NSString *fileName = clothInfo.imageName;
+    if (!fileName)
+    {
+        fileName = @"currentImage";
+    }
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Added"];
+    NSString* path = [sourcePath stringByAppendingPathComponent:
+                      fileName];
+    
+    UIImage *image = [UIImage imageWithContentsOfFile:clothInfo.imagePath];
+    UIImage *imageGood = [UIImage imageWithCGImage:image.CGImage scale:1.0 orientation:UIImageOrientationUp];
+    UIImageOrientation imageorient = imageGood.imageOrientation;
+    
+    if (imageGood)
+    {
+        NSData *data = UIImagePNGRepresentation(imageGood);
+        [data writeToFile:path atomically:YES];
+    }
+    
+    clothInfo.imagePath = path;
+    clothInfo.imageName = fileName;
+    clothInfo.image = image;
 }
 
 - (void)saveOnThread
@@ -422,7 +427,40 @@ static InfoLogic *sharedInstance = nil;
 
 - (void)removeCloth:(Cloth *)clothInfo
 {
+    NSMutableArray *clothsToRemove = nil;
+    switch (clothInfo.itemTypeInfo.itemType)
+    {
+        case pantItemClothType:
+        {
+            clothsToRemove = _pants;
+            break;
+        }
+        case skirtItemClothType:
+        {
+            clothsToRemove = _skirts;
+            break;
+        }
+        case teeShirtItemClothType:
+        {
+            clothsToRemove = _teeShirts;
+            break;
+        }
+        case accessoryItemClothType:
+        {
+            clothsToRemove = _accessory;
+            break;
+        }
+        default:
+            break;
+    }
     
+    if ([clothsToRemove containsObject:clothInfo])
+    {
+        clothInfo.delegate = nil;
+        [clothsToRemove removeObject:clothInfo];
+    }
+    
+    [self updateFilterCloths];
 }
 
 - (void)addToArray:(NSMutableArray *)clothArray cloth:(Cloth *)cloth

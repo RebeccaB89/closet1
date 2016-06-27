@@ -20,7 +20,7 @@
 
 + (NSArray *)allClothType
 {
-    return [NSArray arrayWithObjects:[ColorClothTypeInfo colorWithType:blackColorClothType], [ColorClothTypeInfo colorWithType:whiteColorClothType], [ColorClothTypeInfo colorWithType:redColorClothType], [ColorClothTypeInfo colorWithType:blueColorClothType],[ColorClothTypeInfo colorWithType:pinkColorClothType], [ColorClothTypeInfo colorWithType:purpleColorClothType], [ColorClothTypeInfo colorWithType:orangeColorClothType], [ColorClothTypeInfo colorWithType:greenColorClothType], [ColorClothTypeInfo colorWithType:grayColorClothType], [ColorClothTypeInfo colorWithType:multiColorColorClothType], nil];
+    return [NSArray arrayWithObjects:[ColorClothTypeInfo colorWithType:blackColorClothType], [ColorClothTypeInfo colorWithType:whiteColorClothType], [ColorClothTypeInfo colorWithType:redColorClothType], [ColorClothTypeInfo colorWithType:blueColorClothType],[ColorClothTypeInfo colorWithType:pinkColorClothType], [ColorClothTypeInfo colorWithType:purpleColorClothType], [ColorClothTypeInfo colorWithType:orangeColorClothType], [ColorClothTypeInfo colorWithType:greenColorClothType], [ColorClothTypeInfo colorWithType:grayColorClothType], nil];
 }
 
 + (NSString *)clothTypeStr
@@ -55,9 +55,6 @@
         case blueColorClothType:
             return NLS(@"Blue");
             break;
-        case multiColorColorClothType:
-            return NLS(@"Multi");
-            break;
         case orangeColorClothType:
             return NLS(@"Orange");
             break;
@@ -84,6 +81,48 @@
     }
 }
 
++ (NSString *)questionChooser
+{
+    return @"Color";
+}
+
+- (NSArray *)colorsLikely
+{
+    switch (self.colorType)
+    {
+        case blackColorClothType:
+            return @[@(whiteColorClothType), @(grayColorClothType)];
+            break;
+        case blueColorClothType:
+            return @[@(blackColorClothType), @(whiteColorClothType)];
+            break;
+        case orangeColorClothType:
+            return @[@(grayColorClothType), @(blackColorClothType)];
+            break;
+        case pinkColorClothType:
+            return @[@(grayColorClothType), @(whiteColorClothType)];
+            break;
+        case purpleColorClothType:
+            return @[@(whiteColorClothType), @(grayColorClothType)];
+            break;
+        case redColorClothType:
+            return @[@(whiteColorClothType), @(blackColorClothType)];
+            break;
+        case greenColorClothType:
+            return @[@(whiteColorClothType), @(blackColorClothType)];
+            break;
+        case whiteColorClothType:
+            return @[@(grayColorClothType), @(blackColorClothType)];
+            break;
+        case grayColorClothType:
+            return @[@(whiteColorClothType), @(blackColorClothType)];
+            break;
+            
+        default:
+            return @[];
+    }
+}
+
 - (UIColor *)color
 {
     switch (self.colorType)
@@ -94,9 +133,7 @@
         case blueColorClothType:
             return [UIColor blueColor];
             break;
-        case multiColorColorClothType:
-            return [UIColor clearColor];
-            break;
+
         case orangeColorClothType:
             return [UIColor orangeColor];
             break;
@@ -121,6 +158,18 @@
             
         default:
             return [UIColor yellowColor];
+    }
+}
+
+- (UIColor *)textColor
+{
+    switch (self.colorType)
+    {
+        case blackColorClothType:
+            return [UIColor whiteColor];
+            break;
+               default:
+            return [UIColor blackColor];
     }
 }
 

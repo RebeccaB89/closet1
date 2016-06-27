@@ -13,6 +13,7 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IF-VE-9EW">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="554"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </scrollView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bmj-Jh-79j">
                     <rect key="frame" x="265" y="562" width="71" height="37"/>
@@ -38,7 +39,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="Bmj-Jh-79j" secondAttribute="centerX" id="00a-or-H1M"/>
                 <constraint firstAttribute="trailing" secondItem="2IF-VE-9EW" secondAttribute="trailing" id="5PX-Xh-wkM"/>

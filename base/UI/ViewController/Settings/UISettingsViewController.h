@@ -15,12 +15,13 @@
     
     __weak IBOutlet UIView *_weatherPlaceholder;
     
-    __weak IBOutlet UIButton *_filterDateButton;
+    __weak IBOutlet UILabel *_colorSchemeLabel;
+    
+    __weak IBOutlet UISwitch *_colorSchemeSwitch;
     
     UIWeatherView *_weatherView;
 }
 
-- (IBAction)filterDateClicked:(UIButton *)sender;
-
+- (IBAction)colorSwitchChanged:(id)sender;
 
 @end

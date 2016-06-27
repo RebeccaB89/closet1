@@ -8,6 +8,8 @@
 
 #import "UIMainViewController.h"
 #import "viewLogic.h"
+// Login button gradient
+
 
 
 @interface UIMainViewController ()
@@ -22,27 +24,41 @@
     
     self.title = NLS(@"CLOSET");
 
+    CAGradientLayer *btnGradient = [CAGradientLayer layer];
+    //[UIColor lightGrayColor]
+    [self.view.layer insertSublayer:btnGradient atIndex:0];
+    btnGradient.frame = self.view.bounds;
+    btnGradient.colors = [NSArray arrayWithObjects:
+                          (id)LOGIN_BUTTON_GRADIENT_START.CGColor,
+                          (id)LOGIN_BUTTON_GRADIENT_END.CGColor,
+                          nil];
+
     _cameraButton.tag = cameraMainOptionType;
-    _cameraButton.layer.cornerRadius = 20.0;
-    _cameraButton.layer.borderWidth = 0.0;
-    [_cameraButton setTitle:NLS(@"Camera") forState:UIControlStateNormal];
+    _cameraButton.layer.cornerRadius = 30.0;
+    _cameraButton.layer.borderWidth = 1.0;
+    _cameraButton.layer.borderColor = LOGIN_BUTTON_GRADIENT_START.CGColor;
+
+    [_cameraButton setTitle:NLS(@"Add item") forState:UIControlStateNormal];
     
     _dresserButton.tag = dresserMainOptionType;
-    _dresserButton.layer.cornerRadius = 20.0;
-    _dresserButton.layer.borderWidth = 0.0;
+    _dresserButton.layer.cornerRadius = 30.0;
+    _dresserButton.layer.borderWidth = 1.0;
+    _dresserButton.layer.borderColor = LOGIN_BUTTON_GRADIENT_START.CGColor;
+
     [_dresserButton setTitle:NLS(@"Dresser") forState:UIControlStateNormal];
     
     _costumeButton.tag = costumeMainOptionType;
-    _costumeButton.layer.cornerRadius = 20.0;
-    _costumeButton.layer.borderWidth = 0.0;
+    _costumeButton.layer.cornerRadius = 30.0;
+    _costumeButton.layer.borderWidth = 1.0;
+    _costumeButton.layer.borderColor = LOGIN_BUTTON_GRADIENT_START.CGColor;
+
     [_costumeButton setTitle:NLS(@"Costume") forState:UIControlStateNormal];
     
-    _settingsButton.layer.cornerRadius = 20.0;
-    _settingsButton.layer.borderWidth = 0.0;
     
     _settingsButton.tag = settingsMainOptionType;
-    _settingsButton.layer.cornerRadius = 20.0;
-    _settingsButton.layer.borderWidth = 0.0;
+    _settingsButton.layer.cornerRadius = 30.0;
+    _settingsButton.layer.borderWidth = 1.0;
+    _settingsButton.layer.borderColor = LOGIN_BUTTON_GRADIENT_START.CGColor;
     [_settingsButton setTitle:NLS(@"Settings") forState:UIControlStateNormal];
 }
 

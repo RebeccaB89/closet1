@@ -13,6 +13,8 @@
 
 @interface UICostumeViewController : UIViewController <UIFilterItemViewDelegate, UITagsViewDelegate>
 {
+    __weak IBOutlet UISegmentedControl *_segmentedControl;
+    
     __weak IBOutlet UIView *_tagsPlaceHolder;
     
     __weak IBOutlet UIView *_filterPlaceHolder;
@@ -35,5 +37,7 @@
     
     UIResultFilterView *_resultFilterView;
 }
+
+- (IBAction)filterOptionChanged:(UISegmentedControl *)sender;
 
 @end

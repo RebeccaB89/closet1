@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Cloth.h"
 
+typedef enum : NSUInteger {
+    filterMeteoOptionToday,
+    filterMeteoOptionTomorrow,
+    filterMeteoOptionManual,
+} FilterMeteoOption;
+
 @interface FilterLogic : NSObject
 
 + (FilterLogic *)sharedInstance;
@@ -19,7 +25,7 @@
 - (NSDictionary *)clothTypes;
 - (NSArray *)clothsForClothTypeFilters:(NSArray *)filters;
 
-@property (nonatomic, unsafe_unretained) BOOL accordingFilterByMeteo;
+@property (nonatomic, unsafe_unretained) FilterMeteoOption accordingFilterByMeteo;
 @property (nonatomic, unsafe_unretained) BOOL accordingFilterByColorScheme;
 
 @end

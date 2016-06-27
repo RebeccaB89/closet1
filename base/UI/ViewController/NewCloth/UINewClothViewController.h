@@ -22,4 +22,6 @@
 @property (nonatomic, strong) Cloth *clothInfo;
 @property (nonatomic, unsafe_unretained) BOOL popToRoot;
 
+- (IBAction)deleteButtonClicked:(id)sender;
+
 @end

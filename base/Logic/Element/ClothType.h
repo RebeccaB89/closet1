@@ -15,6 +15,7 @@
 + (NSString *)questionChooser;
 
 - (UIColor *)color;
+- (UIColor *)textColor;
 - (NSString *)strType;
 - (UIImage *)image;
 - (BOOL)canMultipleSelection;

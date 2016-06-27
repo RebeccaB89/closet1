@@ -12,7 +12,10 @@ typedef enum : NSUInteger {
     workEventClothType,
     dateEventClothType,
     sportEventClothType,
-    interviewEventClothType
+    interviewEventClothType,
+    casualEventClothType,
+    formalEventClothType,
+
 } EventClothType;
 
 @interface EventClothTypeInfo : ClothType

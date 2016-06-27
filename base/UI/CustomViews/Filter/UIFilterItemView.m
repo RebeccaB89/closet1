@@ -24,10 +24,14 @@
         if (!_imageView.image)
         {
             self.backgroundColor = _clothType.color;
+            _titleLabel.textColor = _clothType.textColor;
+            
         }
         else
         {
             self.backgroundColor = [UIColor clearColor];
+            _titleLabel.textColor = [UIColor blackColor];
+
         }
         _titleLabel.text = _clothType.strType;
     }

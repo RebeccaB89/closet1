@@ -108,6 +108,23 @@
         _scrollView.contentSize = CGSizeMake(i, _scrollView.height);
         _pageControl.numberOfPages = _scrollView.subviews.count;
     }
+    
+    [self layoutButtons];
+}
+
+- (void)layoutButtons
+{
+    _previousButton.hidden = NO;
+    _nextButton.hidden = NO;
+
+    if (_pageControl.currentPage == _pageControl.numberOfPages - 1)
+    {
+        _nextButton.hidden = YES;
+    }
+    if (_pageControl.currentPage == 0)
+    {
+        _previousButton.hidden = YES;
+    }
 }
 
 - (UICategoryChooserView *)categoryChooserView:(Class)clothTypeInfo
@@ -126,6 +143,8 @@
         _pageControl.currentPage = 0;
     }
     _scrollView.contentOffset = CGPointMake(_pageControl.currentPage * _scrollView.width, 0);
+    
+    [self layoutButtons];
 }
 
 - (IBAction)nextButton:(UIButton *)sender
@@ -136,6 +155,8 @@
         _pageControl.currentPage = _pageControl.numberOfPages -1;
     }
     _scrollView.contentOffset = CGPointMake(_pageControl.currentPage * _scrollView.width, 0);
+    
+    [self layoutButtons];
 }
 
 /* UIScrollView delegates */
@@ -147,6 +168,8 @@
     CGFloat pageWidth = scrollView.width;
     int page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     _pageControl.currentPage = page;
+    
+    [self layoutButtons];
 }
 /* End UIScrollView delegates */
 

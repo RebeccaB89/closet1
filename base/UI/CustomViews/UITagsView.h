@@ -30,6 +30,7 @@
 }
 
 - (void)addClothType:(ClothType *)clothType;
+- (void)removeAllTabs;
 - (NSArray *)clothTypeTags;
 
 @property (nonatomic, weak) id<UITagsViewDelegate> delegate;

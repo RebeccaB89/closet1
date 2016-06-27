@@ -11,7 +11,6 @@
                 <outlet property="_cameraButton" destination="hj4-GY-Jd1" id="Ic3-1n-UoG"/>
                 <outlet property="_libraryButton" destination="94y-mE-ETi" id="6DM-iO-ofC"/>
                 <outlet property="_photoImageView" destination="Cbi-Jo-L3b" id="IdD-oG-odb"/>
-                <outlet property="_weatherPlaceholder" destination="hdu-sC-ZfX" id="Qc6-c4-3CO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,42 +19,68 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94y-mE-ETi" userLabel="Library Button">
-                    <rect key="frame" x="44" y="392" width="233" height="46"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94y-mE-ETi" userLabel="Library Button">
+                    <rect key="frame" x="224" y="418" width="56" height="40"/>
+                    <color key="backgroundColor" red="0.29516676080460841" green="0.63615463197115263" blue="0.76921559343434343" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="qzs-MI-NQC"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                     <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="libraryClicked:" destination="-1" eventType="touchUpInside" id="SNr-qo-atp"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj4-GY-Jd1" userLabel="Camera Button">
-                    <rect key="frame" x="188" y="162" width="132" height="41"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hj4-GY-Jd1" userLabel="Camera Button">
+                    <rect key="frame" x="40" y="418" width="56" height="40"/>
+                    <color key="backgroundColor" red="0.29516676080460841" green="0.63615463197115263" blue="0.76921559343434343" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                     <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="cameraClicked:" destination="-1" eventType="touchUpInside" id="Fit-Do-rdd"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbi-Jo-L3b">
-                    <rect key="frame" x="44" y="227" width="241" height="157"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cbi-Jo-L3b">
+                    <rect key="frame" x="40" y="70" width="240" height="328"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6C-FB-hf9" userLabel="Add Button">
-                    <rect key="frame" x="52" y="471" width="225" height="58"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6C-FB-hf9" userLabel="Add Button">
+                    <rect key="frame" x="132" y="478" width="56" height="40"/>
+                    <color key="backgroundColor" red="0.29516676080460841" green="0.63615463197115263" blue="0.76921559343434343" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                     <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="addClicked:" destination="-1" eventType="touchUpInside" id="XIK-Fq-pvB"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-sC-ZfX" userLabel="Weather PlaceHOlder">
-                    <rect key="frame" x="8" y="69" width="150" height="150"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="width" secondItem="hj4-GY-Jd1" secondAttribute="width" id="0se-d8-0rC"/>
+                <constraint firstItem="Cbi-Jo-L3b" firstAttribute="leading" secondItem="hj4-GY-Jd1" secondAttribute="leading" id="3s1-nT-chk"/>
+                <constraint firstAttribute="bottom" secondItem="l6C-FB-hf9" secondAttribute="bottom" constant="50" id="4MS-fD-jPw"/>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="trailing" secondItem="Cbi-Jo-L3b" secondAttribute="trailing" id="Bgo-7Q-6w2"/>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="top" secondItem="hj4-GY-Jd1" secondAttribute="top" id="Cop-ua-CxV"/>
+                <constraint firstAttribute="centerX" secondItem="l6C-FB-hf9" secondAttribute="centerX" id="DHP-6J-YTf"/>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="height" secondItem="hj4-GY-Jd1" secondAttribute="height" id="HO3-NM-fI2"/>
+                <constraint firstAttribute="centerX" secondItem="Cbi-Jo-L3b" secondAttribute="centerX" id="LCo-vt-QU0"/>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="height" secondItem="hj4-GY-Jd1" secondAttribute="height" id="Z5n-iw-SfG"/>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="top" secondItem="Cbi-Jo-L3b" secondAttribute="bottom" constant="20" id="Zpn-kt-Pei"/>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="height" secondItem="l6C-FB-hf9" secondAttribute="height" id="aLy-24-2hK"/>
+                <constraint firstItem="l6C-FB-hf9" firstAttribute="top" secondItem="hj4-GY-Jd1" secondAttribute="bottom" constant="20" id="bLo-PD-DIk"/>
+                <constraint firstItem="Cbi-Jo-L3b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="fNm-TK-YPY"/>
+                <constraint firstItem="94y-mE-ETi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hj4-GY-Jd1" secondAttribute="trailing" id="ggf-PY-SgM"/>
+                <constraint firstItem="Cbi-Jo-L3b" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="mjg-Wf-afk"/>
+                <constraint firstAttribute="trailing" secondItem="Cbi-Jo-L3b" secondAttribute="trailing" constant="40" id="uvt-0C-oYq"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="247" y="469"/>
         </view>

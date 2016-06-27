@@ -20,7 +20,7 @@
 
 + (NSArray *)allClothType
 {
-    return [NSArray arrayWithObjects:[EventClothTypeInfo eventWithType:dateEventClothType], [EventClothTypeInfo eventWithType:workEventClothType], [EventClothTypeInfo eventWithType:sportEventClothType], [EventClothTypeInfo eventWithType:interviewEventClothType], nil];
+    return [NSArray arrayWithObjects:[EventClothTypeInfo eventWithType:dateEventClothType], [EventClothTypeInfo eventWithType:workEventClothType], [EventClothTypeInfo eventWithType:sportEventClothType], [EventClothTypeInfo eventWithType:interviewEventClothType], [EventClothTypeInfo eventWithType:casualEventClothType], [EventClothTypeInfo eventWithType:formalEventClothType], nil];
 }
 
 + (NSString *)clothTypeStr
@@ -45,6 +45,11 @@
     [aCoder encodeInt:_eventType forKey:@"eventType"];
 }
 
++ (NSString *)questionChooser
+{
+    return @"Event";
+}
+
 - (UIColor *)color
 {
     switch (self.eventType)
@@ -60,6 +65,12 @@
             break;
         case workEventClothType:
             return [UIColor brownColor];
+            break;
+        case casualEventClothType:
+            return [UIColor cyanColor];
+            break;
+        case formalEventClothType:
+            return [UIColor purpleColor];
             break;
             
         default:
@@ -82,6 +93,12 @@
             break;
         case workEventClothType:
             return NLS(@"Work");
+            break;
+        case casualEventClothType:
+            return NLS(@"Casual");
+            break;
+        case formalEventClothType:
+            return NLS(@"Formal");
             break;
             
         default:

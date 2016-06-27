@@ -38,6 +38,16 @@
 {
     [super viewDidLoad];
     
+    CAGradientLayer *btnGradient = [CAGradientLayer layer];
+    //[UIColor lightGrayColor]
+    [self.view.layer insertSublayer:btnGradient atIndex:0];
+    btnGradient.frame = self.view.bounds;
+    btnGradient.colors = [NSArray arrayWithObjects:
+                          (id)LOGIN_BUTTON_GRADIENT_START.CGColor,
+                          (id)LOGIN_BUTTON_GRADIENT_END.CGColor,
+                          nil];
+
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weatherChanged:) name:WEATHER_CHANGED_EVENT object:nil];
 
     self.title = NLS(@"Camera");
@@ -91,7 +101,6 @@
     if (([UIImagePickerController isSourceTypeAvailable:
           UIImagePickerControllerSourceTypePhotoLibrary] == NO))
         return NO;
-    
     
     UIImagePickerController *cameraUI = [[UIImagePickerController alloc] init];
     cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;

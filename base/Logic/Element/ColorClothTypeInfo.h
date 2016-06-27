@@ -17,14 +17,14 @@ typedef enum : NSUInteger {
     purpleColorClothType,
     orangeColorClothType,
     greenColorClothType,
-    grayColorClothType,
-    multiColorColorClothType
+    grayColorClothType
 } ColorClothType;
 
 @interface ColorClothTypeInfo : ClothType
 
 + (ColorClothTypeInfo *)colorWithType:(ColorClothType)colorClothType;
 
+- (NSArray *)colorsLikely;
 @property (nonatomic, unsafe_unretained) ColorClothType colorType;
 
 @end

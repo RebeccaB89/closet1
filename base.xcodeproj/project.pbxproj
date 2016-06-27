@@ -74,6 +74,7 @@
 		B314DA4B1B57DCD400BA53CA /* UINewClothViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B314DA491B57DCD400BA53CA /* UINewClothViewController.xib */; };
 		B33137151BF38FBB006C22BB /* UICategoryChooserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B33137131BF38FBB006C22BB /* UICategoryChooserTableViewCell.m */; };
 		B33137161BF38FBB006C22BB /* UICategoryChooserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B33137141BF38FBB006C22BB /* UICategoryChooserTableViewCell.xib */; };
+		B33CE0561C28401C001FF4D8 /* ColorSchemeLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = B33CE0551C28401C001FF4D8 /* ColorSchemeLogic.m */; };
 		B34E4F3D1C0DCD1E00A85B92 /* NSDate-Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = B34E4F3C1C0DCD1E00A85B92 /* NSDate-Expanded.m */; };
 		B350402E1BD4E310004A58DC /* UILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B350402C1BD4E310004A58DC /* UILoginViewController.m */; };
 		B350402F1BD4E310004A58DC /* UILoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B350402D1BD4E310004A58DC /* UILoginViewController.xib */; };
@@ -153,7 +154,7 @@
 		B3AEEE921B8C4B62006AB4C9 /* ClothToSharedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B3AEEE911B8C4B62006AB4C9 /* ClothToSharedInfo.m */; };
 		B3BEAFCA1BFA6F3800E6CBA9 /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = B3BEAFC91BFA6F3800E6CBA9 /* favorite.png */; };
 		B3BEAFCC1BFA701100E6CBA9 /* favoriteDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B3BEAFCB1BFA701100E6CBA9 /* favoriteDisabled.png */; };
-		B3FBF1771BF12585006DBAA8 /* LaunchImage-700@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B3FBF1761BF12585006DBAA8 /* LaunchImage-700@2x.png */; };
+		B3FBF1771BF12585006DBAA8 /* LaunchImage-700@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B3FBF1761BF12585006DBAA8 /* LaunchImage-700@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,6 +262,8 @@
 		B33137121BF38FBB006C22BB /* UICategoryChooserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICategoryChooserTableViewCell.h; sourceTree = "<group>"; };
 		B33137131BF38FBB006C22BB /* UICategoryChooserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICategoryChooserTableViewCell.m; sourceTree = "<group>"; };
 		B33137141BF38FBB006C22BB /* UICategoryChooserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICategoryChooserTableViewCell.xib; sourceTree = "<group>"; };
+		B33CE0541C28401C001FF4D8 /* ColorSchemeLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSchemeLogic.h; sourceTree = "<group>"; };
+		B33CE0551C28401C001FF4D8 /* ColorSchemeLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSchemeLogic.m; sourceTree = "<group>"; };
 		B34E4F3B1C0DCD1E00A85B92 /* NSDate-Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Expanded.h"; sourceTree = "<group>"; };
 		B34E4F3C1C0DCD1E00A85B92 /* NSDate-Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Expanded.m"; sourceTree = "<group>"; };
 		B350402B1BD4E310004A58DC /* UILoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILoginViewController.h; sourceTree = "<group>"; };
@@ -396,7 +399,7 @@
 		B3AEEE911B8C4B62006AB4C9 /* ClothToSharedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClothToSharedInfo.m; sourceTree = "<group>"; };
 		B3BEAFC91BFA6F3800E6CBA9 /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		B3BEAFCB1BFA701100E6CBA9 /* favoriteDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favoriteDisabled.png; sourceTree = "<group>"; };
-		B3FBF1761BF12585006DBAA8 /* LaunchImage-700@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-700@2x.png"; sourceTree = "<group>"; };
+		B3FBF1761BF12585006DBAA8 /* LaunchImage-700@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "LaunchImage-700@2x.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -615,6 +618,8 @@
 				B35040431BD52F96004A58DC /* LocationLogic.m */,
 				B3AB74D11BD7787500257E3A /* WeatherLogic.h */,
 				B3AB74D21BD7787500257E3A /* WeatherLogic.m */,
+				B33CE0541C28401C001FF4D8 /* ColorSchemeLogic.h */,
+				B33CE0551C28401C001FF4D8 /* ColorSchemeLogic.m */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -712,9 +717,9 @@
 				48BB71E81B329BD300641F76 /* ClothTypeHelper.m */,
 				480C7C8D1B332F1500D4E585 /* ClothType.h */,
 				480C7C8E1B332F1500D4E585 /* ClothType.m */,
-				480C7C931B3330A800D4E585 /* ColorClothTypeInfo.h */,
 				480C7C901B332FB200D4E585 /* ItemClothTypeInfo.h */,
 				480C7C911B332FB200D4E585 /* ItemClothTypeInfo.m */,
+				480C7C931B3330A800D4E585 /* ColorClothTypeInfo.h */,
 				480C7C941B3330A800D4E585 /* ColorClothTypeInfo.m */,
 				480C7C961B33318900D4E585 /* EventClothTypeInfo.h */,
 				480C7C971B33318900D4E585 /* EventClothTypeInfo.m */,
@@ -968,7 +973,7 @@
 		B3FBF1751BF1256C006DBAA8 /* BG */ = {
 			isa = PBXGroup;
 			children = (
-				B3FBF1761BF12585006DBAA8 /* LaunchImage-700@2x.png */,
+				B3FBF1761BF12585006DBAA8 /* LaunchImage-700@2x.jpg */,
 			);
 			path = BG;
 			sourceTree = "<group>";
@@ -1085,7 +1090,7 @@
 				B33137161BF38FBB006C22BB /* UICategoryChooserTableViewCell.xib in Resources */,
 				B314DA4B1B57DCD400BA53CA /* UINewClothViewController.xib in Resources */,
 				480C7CB01B36899700D4E585 /* UIBubbleContactView.xib in Resources */,
-				B3FBF1771BF12585006DBAA8 /* LaunchImage-700@2x.png in Resources */,
+				B3FBF1771BF12585006DBAA8 /* LaunchImage-700@2x.jpg in Resources */,
 				488975031B00928400E63E90 /* LaunchScreen.xib in Resources */,
 				4846DA761B45651F006C62DC /* skirt2.png in Resources */,
 				4846DA811B45652A006C62DC /* teeShirt2.png in Resources */,
@@ -1198,6 +1203,7 @@
 				B3AE936D1B8CC2DE00190576 /* SFOAuth1Client.m in Sources */,
 				B3AE93621B8CC2DE00190576 /* AFImageRequestOperation.m in Sources */,
 				48BB71E31B31B58E00641F76 /* Element.m in Sources */,
+				B33CE0561C28401C001FF4D8 /* ColorSchemeLogic.m in Sources */,
 				480C7CC31B36D9BC00D4E585 /* UIFiltersView.m in Sources */,
 				480C7C951B3330A800D4E585 /* ColorClothTypeInfo.m in Sources */,
 				B3AB750B1BD78EBD00257E3A /* UIButton+WebCache.m in Sources */,

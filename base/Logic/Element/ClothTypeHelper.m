@@ -26,7 +26,7 @@
 {
     NSMutableArray *seasons = [NSMutableArray array];
     
-    for (int i = blackColorClothType; i <= multiColorColorClothType; i++)
+    for (int i = blackColorClothType; i <= grayColorClothType; i++)
     {
         [seasons addObject:[ColorClothTypeInfo colorWithType:i]];
     }
@@ -38,7 +38,7 @@
 {
     NSMutableArray *events = [NSMutableArray array];
     
-    for (int i = workEventClothType; i <= interviewEventClothType; i++)
+    for (int i = workEventClothType; i <= formalEventClothType; i++)
     {
         [events addObject:[EventClothTypeInfo eventWithType:i]];
     }

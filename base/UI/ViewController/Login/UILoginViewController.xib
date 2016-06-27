@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage-700.png" translatesAutoresizingMaskIntoConstraints="NO" id="QSi-o0-P1L">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage-700.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="QSi-o0-P1L">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NgP-AU-99f" userLabel="FCBK login placeholder">
@@ -53,6 +53,6 @@
         </view>
     </objects>
     <resources>
-        <image name="LaunchImage-700.png" width="320" height="480"/>
+        <image name="LaunchImage-700.jpg" width="320" height="480"/>
     </resources>
 </document>

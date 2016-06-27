@@ -40,7 +40,7 @@
 - (BOOL)isWinter
 {
     NSInteger month = [self monthOfDate];
-    if (month >= 12 && month <= 2)
+    if (month >= 12 || month <= 2)
     {
         return YES;
     }
@@ -70,35 +70,26 @@
     return NO;
 }
 
-- (BOOL)isMorning
+- (BOOL)isDay
 {
     NSInteger hour = [self hourOfDate];
     
-    if (hour >= 6 && hour <= 11)
+    if (hour >= 6)
     {
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (BOOL)isNoon
-{
-    NSInteger hour = [self hourOfDate];
-    
-    if ([self isSummer] || [self isSpring])
-    {
-        if (hour >= 12 && hour <= 19)
+        if ([self isSummer] || [self isSpring])
         {
-            return YES;
+            if ( hour <= 19)
+            {
+                return YES;
+            }
         }
-    }
-    
-    if ([self isWinter] || [self isAutumn])
-    {
-        if (hour >= 12 && hour <= 16)
+        
+        if ([self isWinter] || [self isAutumn])
         {
-            return YES;
+            if (hour <= 16)
+            {
+                return YES;
+            }
         }
     }
     

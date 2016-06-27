@@ -17,15 +17,6 @@
     NSArray *colors = [NSArray arrayWithObject:color];
     
     return [Cloth clothWithImagePath:imagePath withSeasons:seasons withEvents:events withColors:colors withItemInfo:itemInfo];
-//    Cloth *cloth = [[Cloth alloc] init];
-//    
-//    cloth.imagePath = imagePath;
-////    cloth.seasonTypeInfo = season;
-////    cloth.eventTypeInfo = event;
-////    cloth.colorTypeInfo = color;
-//    cloth.itemTypeInfo = itemInfo;
-//    
-//    return cloth;
 }
 
 + (Cloth *)clothWithImagePath:(NSString *)imagePath withSeasons:(NSArray *)seasons withEvents:(NSArray *)events withColors:(NSArray *)colors withItemInfo:(ItemClothTypeInfo *)itemInfo
@@ -53,12 +44,29 @@
         self.imageName = [aDecoder decodeObjectForKey:@"imageName"];
         self.imagePath = [aDecoder decodeObjectForKey:@"imagePath"];
 
-        self.image = [aDecoder decodeObjectForKey:@"image"];
+
+        self.image = IMAGE(self.imageName);
 
         if (!self.image)
         {
             self.image = IMAGE(self.imagePath);
         }
+        
+        if (!self.image)
+        {
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                 NSUserDomainMask, YES);
+            NSString *documentsDirectory = [paths objectAtIndex:0];
+            
+            NSString *sourcePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Added"];
+            
+            NSString* path = [documentsDirectory stringByAppendingPathComponent:
+                              self.imageName ];
+            self.imagePath = path;
+            self.image = IMAGE(self.imagePath);
+
+        }
+        
         _itemTypeInfo = [aDecoder decodeObjectForKey:@"itemTypeInfo"];
         _seasonTypeInfos = [aDecoder decodeObjectForKey:@"seasonTypeInfos"];
         _eventTypeInfos = [aDecoder decodeObjectForKey:@"eventTypeInfos"];
